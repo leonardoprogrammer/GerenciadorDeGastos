@@ -4,6 +4,7 @@ import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -12,7 +13,7 @@ import javafx.util.Duration;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class HelloController implements Initializable {
+public class PainelController implements Initializable {
 
     @FXML
     private ImageView imgClose;
@@ -22,6 +23,18 @@ public class HelloController implements Initializable {
 
     @FXML
     private Label lblMenuClose;
+
+    @FXML
+    private Button btnGastos;
+
+    @FXML
+    private Button btnRenda;
+
+    @FXML
+    private Button btnDashboard;
+
+    @FXML
+    private Button btnRelatorios;
 
     //adicionar botões de cima
 
@@ -67,6 +80,22 @@ public class HelloController implements Initializable {
                 lblMenu.setVisible(true);
                 lblMenuClose.setVisible(false);
             });
+        });
+
+        btnGastos.setOnMouseClicked(event -> {
+            //
+        });
+
+        btnRenda.setOnMouseClicked(event -> {
+            //
+        });
+
+        btnDashboard.setOnMouseClicked(event -> {
+            //
+        });
+
+        btnRelatorios.setOnMouseClicked(event -> {
+            //
         });
     }
 }
