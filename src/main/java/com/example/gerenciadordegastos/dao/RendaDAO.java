@@ -20,31 +20,31 @@ public class RendaDAO {
         Connection conn = null;
         PreparedStatement pstm = null;
 
-         try {
-             conn = ConnectionFactory.createConnectionToMySql();
-             pstm = conn.prepareStatement(query.toString());
+        try {
+            conn = ConnectionFactory.createConnectionToMySql();
+            pstm = conn.prepareStatement(query.toString());
 
-             pstm.setString(1, renda.getTitulo());
-             pstm.setDouble(2, renda.getValor());
-             pstm.setDate(3, (Date) renda.getData().getTime());
-             pstm.setString(4, renda.getDescricao());
-             pstm.setDate(5, (Date) renda.getDtaAdd().getTime());
+            pstm.setString(1, renda.getTitulo());
+            pstm.setDouble(2, renda.getValor());
+            pstm.setDate(3, (Date) renda.getData().getTime());
+            pstm.setString(4, renda.getDescricao());
+            pstm.setDate(5, (Date) renda.getDtaAdd().getTime());
 
-             pstm.execute();
-         } catch (Exception e) {
-             e.printStackTrace();
-         } finally {
-             try {
-                 if (conn != null) {
-                     conn.close();
-                 }
-                 if (pstm != null) {
-                     pstm.close();
-                 }
-             } catch (Exception e) {
-                 e.printStackTrace();
-             }
-         }
+            pstm.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (conn != null) {
+                    conn.close();
+                }
+                if (pstm != null) {
+                    pstm.close();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     public void alterarRenda(Renda renda) {
