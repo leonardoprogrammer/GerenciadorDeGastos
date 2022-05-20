@@ -25,6 +25,9 @@ public class PainelController implements Initializable {
     private Label lblMenuClose;
 
     @FXML
+    private Button btnTimeline;
+
+    @FXML
     private Button btnGastos;
 
     @FXML
@@ -36,10 +39,22 @@ public class PainelController implements Initializable {
     @FXML
     private Button btnRelatorios;
 
-    //adicionar botões de cima
+    @FXML
+    private AnchorPane sidebar;
+
+    // ELEMENTOS DO SIDEBAR
 
     @FXML
-    private AnchorPane slider;
+    private Button btnInicio;
+
+    @FXML
+    private Button btnPerfil;
+
+    @FXML
+    private Button btnPreferencias;
+
+    @FXML
+    private Button btnSair;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -49,16 +64,16 @@ public class PainelController implements Initializable {
             System.exit(0);
         });
 
-        slider.setTranslateX(-176);
+        sidebar.setTranslateX(-176);
         lblMenu.setOnMouseClicked(event -> {
             TranslateTransition slide = new TranslateTransition();
             slide.setDuration(Duration.seconds(0.4));
-            slide.setNode(slider);
+            slide.setNode(sidebar);
 
             slide.setToX(0);
             slide.play();
 
-            slider.setTranslateX(-176);
+            sidebar.setTranslateX(-176);
 
             slide.setOnFinished((ActionEvent e) -> {
                 lblMenu.setVisible(false);
@@ -69,17 +84,21 @@ public class PainelController implements Initializable {
         lblMenuClose.setOnMouseClicked(event -> {
             TranslateTransition slide = new TranslateTransition();
             slide.setDuration(Duration.seconds(0.4));
-            slide.setNode(slider);
+            slide.setNode(sidebar);
 
             slide.setToX(-176);
             slide.play();
 
-            slider.setTranslateX(0);
+            sidebar.setTranslateX(0);
 
             slide.setOnFinished((ActionEvent e) -> {
                 lblMenu.setVisible(true);
                 lblMenuClose.setVisible(false);
             });
+        });
+
+        btnTimeline.setOnMouseClicked(event -> {
+            //
         });
 
         btnGastos.setOnMouseClicked(event -> {
@@ -95,6 +114,22 @@ public class PainelController implements Initializable {
         });
 
         btnRelatorios.setOnMouseClicked(event -> {
+            //
+        });
+
+        btnInicio.setOnMouseClicked(event -> {
+            //
+        });
+
+        btnPerfil.setOnMouseClicked(event -> {
+            //
+        });
+
+        btnPreferencias.setOnMouseClicked(event -> {
+            //
+        });
+
+        btnSair.setOnMouseClicked(event -> {
             //
         });
     }

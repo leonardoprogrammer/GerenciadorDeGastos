@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="700.0" stylesheets="/css/Style.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gerenciadordegastos.HelloController">
+<AnchorPane prefHeight="500.0" prefWidth="1000.0" stylesheets="/com/example/gerenciadordegastos/css/Style.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gerenciadordegastos.PainelController">
    <children>
       <BorderPane layoutX="69.0" layoutY="62.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
@@ -13,47 +14,25 @@
                <children>
                   <Pane layoutX="238.0" layoutY="14.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: #032d4d;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <ImageView fx:id="imgClose" fitHeight="22.0" fitWidth="22.0" layoutX="678.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../icons/exit.png" />
-                           </image></ImageView>
-                        <Label layoutX="8.0" layoutY="5.0" text="Leonardo Cesar da Silva - CPF/CNPJ: 434.781.168-30" textFill="WHITE">
+                        <Label fx:id="lblTitulo" layoutX="11.0" layoutY="5.0" text="Gerenciador de Gastos" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Label>
+                        <ImageView fx:id="imgClose" fitHeight="22.0" fitWidth="22.0" layoutX="972.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/exit.png" />
+                           </image>
+                           <viewport>
+                              <Rectangle2D />
+                           </viewport>
+                        </ImageView>
                      </children></Pane>
-                  <HBox layoutX="274.0" layoutY="1.0" prefHeight="43.0" prefWidth="525.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
-                     <children>
-                        <Button fx:id="btnGastos" mnemonicParsing="false" prefHeight="38.0" prefWidth="136.0" style="-fx-background-color: WHITE;" text="Gastos" textFill="#4a4a4a">
-                           <graphic>
-                              <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true" />
-                           </graphic></Button>
-                        <Button fx:id="btnRenda" mnemonicParsing="false" prefHeight="38.0" prefWidth="136.0" style="-fx-background-color: WHITE;" text="Renda" textFill="#4a4a4a">
-                           <graphic>
-                              <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../icons/add1.png" />
-                                 </image></ImageView>
-                           </graphic></Button>
-                        <Button fx:id="btnDashboard" mnemonicParsing="false" prefHeight="38.0" prefWidth="136.0" style="-fx-background-color: WHITE;" text="Dashboard" textFill="#4a4a4a">
-                           <graphic>
-                              <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../icons/dash1.png" />
-                                 </image></ImageView>
-                           </graphic></Button>
-                        <Button fx:id="btnRelatorios" mnemonicParsing="false" prefHeight="38.0" prefWidth="136.0" style="-fx-background-color: WHITE;" text="Relatórios" textFill="#4a4a4a">
-                           <graphic>
-                              <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true" />
-                           </graphic></Button>
-                     </children>
-                  </HBox>
                   <Label fx:id="lblMenu" layoutX="14.0" layoutY="37.0" text="MENU" textFill="#8a8888">
                      <graphic>
                         <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../icons/menu1.png" />
+                              <Image url="@../icons/menu1.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -68,16 +47,42 @@
                      <graphic>
                         <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../icons/menu1.png" />
+                              <Image url="@../icons/menu1.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Label>
+                  <HBox layoutX="274.0" layoutY="1.0" prefHeight="43.0" prefWidth="525.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
+                     <children>
+                        <Button fx:id="btnDashboard" mnemonicParsing="false" prefHeight="38.0" prefWidth="136.0" style="-fx-background-color: WHITE;" text="Dashboard" textFill="#4a4a4a">
+                           <graphic>
+                              <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../icons/dash1.png" />
+                                 </image></ImageView>
+                           </graphic></Button>
+                        <Button fx:id="btnGastos" mnemonicParsing="false" prefHeight="38.0" prefWidth="136.0" style="-fx-background-color: WHITE;" text="Gastos" textFill="#4a4a4a">
+                           <graphic>
+                              <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true" />
+                           </graphic></Button>
+                        <Button fx:id="btnRenda" mnemonicParsing="false" prefHeight="38.0" prefWidth="136.0" style="-fx-background-color: WHITE;" text="Renda" textFill="#4a4a4a">
+                           <graphic>
+                              <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../icons/add1.png" />
+                                 </image></ImageView>
+                           </graphic></Button>
+                        <Button fx:id="btnRelatorios" mnemonicParsing="false" prefHeight="38.0" prefWidth="136.0" style="-fx-background-color: WHITE;" text="Relatórios" textFill="#4a4a4a">
+                           <graphic>
+                              <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true" />
+                           </graphic></Button>
+                     </children>
+                  </HBox>
                </children>
             </AnchorPane>
          </top>
          <left>
-            <AnchorPane fx:id="slider" prefHeight="362.0" prefWidth="176.0" style="-fx-background-color: #0A4969;" BorderPane.alignment="CENTER">
+            <AnchorPane fx:id="sidebar" prefHeight="362.0" prefWidth="176.0" style="-fx-background-color: #0A4969;" BorderPane.alignment="CENTER">
                <children>
                   <VBox layoutX="38.0" layoutY="58.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="53.0">
                      <children>
@@ -88,7 +93,7 @@
                            <graphic>
                               <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../icons/home.png" />
+                                    <Image url="@../icons/home.png" />
                                  </image></ImageView>
                            </graphic>
                         </Button>
@@ -97,15 +102,21 @@
                               <Font name="System Bold" size="15.0" />
                            </font>
                            <graphic>
-                              <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../icons/male_user_32px.png" />
+                                 </image></ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="btnReportar" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="38.0" prefWidth="176.0" style="-fx-background-color: #0A4969;" text="Reportar" textFill="WHITE">
+                        <Button fx:id="btnPreferencias" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="38.0" prefWidth="176.0" style="-fx-background-color: #0A4969;" text="Preferências" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
                            <graphic>
-                              <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../icons/settings_32px.png" />
+                                 </image></ImageView>
                            </graphic></Button>
                         <Button fx:id="btnSair" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="38.0" prefWidth="176.0" style="-fx-background-color: #0A4969;" text="Sair" textFill="WHITE">
                            <font>
@@ -114,7 +125,7 @@
                            <graphic>
                               <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../icons/exit.png" />
+                                    <Image url="@../icons/exit_32px.png" />
                                  </image></ImageView>
                            </graphic></Button>
                      </children>
