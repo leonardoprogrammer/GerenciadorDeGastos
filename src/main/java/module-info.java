@@ -6,5 +6,6 @@ module com.example.gerenciadordegastos {
     requires java.desktop;
 
     opens com.example.gerenciadordegastos to javafx.fxml;
+    opens com.example.gerenciadordegastos.controller to javafx.fxml;
     exports com.example.gerenciadordegastos;
 }

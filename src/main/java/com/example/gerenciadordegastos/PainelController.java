@@ -1,19 +1,33 @@
 package com.example.gerenciadordegastos;
 
+import com.example.gerenciadordegastos.enums.ThemeMode;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class PainelController implements Initializable {
+
+    @FXML
+    private Label lblTitulo;
+
+    @FXML
+    private ImageView imgLightMode;
 
     @FXML
     private ImageView imgClose;
@@ -56,12 +70,25 @@ public class PainelController implements Initializable {
     @FXML
     private Button btnSair;
 
+    @FXML
+    private StackPane stackPane;
+
+    private ThemeMode themeMode;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         lblMenuClose.setVisible(false);
 
+        carregarFragment("ui/frgTimeline.fxml");
+
+        alterarTema(ThemeMode.LIGHT_MODE.getId());
+
         imgClose.setOnMouseClicked(event -> {
             System.exit(0);
+        });
+
+        imgLightMode.setOnMouseClicked(event -> {
+            alterarTema(null);
         });
 
         sidebar.setTranslateX(-176);
@@ -98,39 +125,66 @@ public class PainelController implements Initializable {
         });
 
         btnTimeline.setOnMouseClicked(event -> {
-            //
+            carregarFragment("ui/frgTimeline.fxml");
         });
 
         btnGastos.setOnMouseClicked(event -> {
-            //
+            carregarFragment("ui/frgGastos.fxml");
         });
 
         btnRenda.setOnMouseClicked(event -> {
-            //
+            carregarFragment("ui/frgRenda.fxml");
         });
 
         btnDashboard.setOnMouseClicked(event -> {
-            //
+            carregarFragment("ui/frgDashboard.fxml");
         });
 
         btnRelatorios.setOnMouseClicked(event -> {
-            //
+            carregarFragment("ui/frgRelatorios.fxml");
         });
 
         btnInicio.setOnMouseClicked(event -> {
-            //
+            carregarFragment("ui/frgTimeline.fxml");
         });
 
         btnPerfil.setOnMouseClicked(event -> {
-            //
+            carregarFragment("ui/frgPerfil.fxml");
         });
 
         btnPreferencias.setOnMouseClicked(event -> {
-            //
+            carregarFragment("ui/frgPreferencias.fxml");
         });
 
         btnSair.setOnMouseClicked(event -> {
             //
         });
+    }
+
+    private void carregarFragment(String fragment) {
+        try {
+            Parent fxml = FXMLLoader.load(getClass().getResource(fragment));
+            stackPane.getChildren().removeAll();
+            stackPane.getChildren().setAll(fxml);
+        } catch (IOException ex) {
+            Logger.getLogger(PainelController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void alterarTema(Integer tema) {
+        if (tema != null) {
+            themeMode = ThemeMode.get(tema);
+        } else {
+            switch (themeMode) {
+                case LIGHT_MODE:
+                    imgLightMode.setImage(new Image(getClass().getResource("icons/moon_symbol_30px.png").toString()));
+                    themeMode = ThemeMode.DARK_MODE;
+                    break;
+                case DARK_MODE:
+                    imgLightMode.setImage(new Image(getClass().getResource("icons/sun_30px.png").toString()));
+                    themeMode = ThemeMode.LIGHT_MODE;
+                    break;
+            }
+        }
     }
 }

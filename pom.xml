@@ -61,7 +61,7 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>
-                                com.example.gerenciadordegastos/com.example.gerenciadordegastos.HelloApplication
+                                com.example.gerenciadordegastos/com.example.gerenciadordegastos.Main
                             </mainClass>
                         </configuration>
                     </execution>
