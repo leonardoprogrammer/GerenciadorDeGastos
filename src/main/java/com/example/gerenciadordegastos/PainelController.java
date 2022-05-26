@@ -81,7 +81,7 @@ public class PainelController implements Initializable {
 
         carregarFragment("ui/frgTimeline.fxml");
 
-        alterarTema(ThemeMode.LIGHT_MODE.getId());
+        alterarTema(ThemeMode.LIGHT_MODE);
 
         imgClose.setOnMouseClicked(event -> {
             System.exit(0);
@@ -157,7 +157,7 @@ public class PainelController implements Initializable {
         });
 
         btnSair.setOnMouseClicked(event -> {
-            //
+            // DESLOGA O USUÁRIO E VOLTA PARA A TELA DE LOGIN
         });
     }
 
@@ -171,9 +171,9 @@ public class PainelController implements Initializable {
         }
     }
 
-    private void alterarTema(Integer tema) {
+    private void alterarTema(ThemeMode tema) {
         if (tema != null) {
-            themeMode = ThemeMode.get(tema);
+            themeMode = tema;
         } else {
             switch (themeMode) {
                 case LIGHT_MODE:
