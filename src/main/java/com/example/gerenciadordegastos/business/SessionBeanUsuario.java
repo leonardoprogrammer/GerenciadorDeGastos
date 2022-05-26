@@ -1,12 +1,17 @@
 package com.example.gerenciadordegastos.business;
 
 import com.example.gerenciadordegastos.dao.UsuarioDAO;
+import com.example.gerenciadordegastos.entity.Usuario;
 
 public class SessionBeanUsuario {
 
     private UsuarioDAO usuarioDAO;
 
-    public boolean checkLogin(String username, String password) {
-        return usuarioDAO.checkLogin(username, password);
+    public void registrarUsuario(Usuario usuario) {
+        usuarioDAO.registrarUsuario(usuario);
+    }
+
+    public Usuario recuperarUsuarioPorId(long id) {
+        return usuarioDAO.recuperarUsuarioPorId(id);
     }
 }

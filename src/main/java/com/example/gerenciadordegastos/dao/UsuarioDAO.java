@@ -1,8 +1,14 @@
 package com.example.gerenciadordegastos.dao;
 
+import com.example.gerenciadordegastos.entity.Usuario;
+
 public class UsuarioDAO {
 
-    public boolean checkLogin(String username, String password) {
-        return true;
+    public void registrarUsuario(Usuario usuario) {
+        //
+    }
+
+    public Usuario recuperarUsuarioPorId(long id) {
+        return null;
     }
 }
