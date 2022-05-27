@@ -1,6 +1,7 @@
 package com.example.gerenciadordegastos.entity;
 
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class Usuario {
     private long id;
@@ -10,9 +11,9 @@ public class Usuario {
     private String cpf;
     private String email;
     private String telefone;
-    private Calendar nascimento;
-    private Calendar dtaAdd;
-    private Calendar dtaAlt;
+    private Calendar nascimento = new GregorianCalendar();
+    private Calendar dtaAdd = new GregorianCalendar();
+    private Calendar dtaAlt = new GregorianCalendar();
 
     public Usuario() {
 

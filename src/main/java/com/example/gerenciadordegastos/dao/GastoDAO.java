@@ -157,7 +157,7 @@ public class GastoDAO {
     }
 
     public Gasto recuperarGastoPorId(long id) {
-        String query = "SELECT * FROM GASTO";
+        String query = "SELECT * FROM GASTO WHERE id = ?";
         Gasto gasto = new Gasto();
 
         Connection conn = null;

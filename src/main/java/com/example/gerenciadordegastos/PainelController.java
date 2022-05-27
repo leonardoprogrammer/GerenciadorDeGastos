@@ -1,5 +1,8 @@
 package com.example.gerenciadordegastos;
 
+import com.example.gerenciadordegastos.business.SessionBeanUsuario;
+import com.example.gerenciadordegastos.dao.UsuarioDAO;
+import com.example.gerenciadordegastos.entity.Usuario;
 import com.example.gerenciadordegastos.enums.ThemeMode;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
@@ -73,7 +76,9 @@ public class PainelController implements Initializable {
     @FXML
     private StackPane stackPane;
 
+    private SessionBeanUsuario sessionBeanUsuario = new SessionBeanUsuario();
     private ThemeMode themeMode;
+    private Usuario usuario;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

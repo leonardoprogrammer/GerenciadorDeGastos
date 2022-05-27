@@ -5,7 +5,7 @@ import com.example.gerenciadordegastos.entity.Usuario;
 
 public class SessionBeanUsuario {
 
-    private UsuarioDAO usuarioDAO;
+    private UsuarioDAO usuarioDAO = new UsuarioDAO();
 
     public void registrarUsuario(Usuario usuario) {
         usuarioDAO.registrarUsuario(usuario);
