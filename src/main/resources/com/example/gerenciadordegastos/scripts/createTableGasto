@@ -1,0 +1,11 @@
+CREATE TABLE GASTO (
+    id integer not null,
+    id_usuario integer not null,
+    sequencia integer not null,
+    titulo varchar(200),
+    valor double precision,
+    data date,
+    descricao varchar(255),
+    dta_add date,
+    dta_alt date
+);
