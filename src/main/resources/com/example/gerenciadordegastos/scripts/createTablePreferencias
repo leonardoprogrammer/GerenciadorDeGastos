@@ -1,0 +1,5 @@
+CREATE TABLE PREFERENCIAS (
+    id integer not null,
+    id_usuario integer not null,
+    tema integer
+);

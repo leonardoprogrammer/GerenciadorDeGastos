@@ -1,0 +1,11 @@
+CREATE TABLE RENDA (
+    id integer not null,
+    id_usuario integer not null,
+    sequencia integer not null,
+    titulo varchar(100),
+    valor double precision,
+    data date,
+    descricao varchar(255),
+    dta_add date,
+    dta_alt date
+);

@@ -14,7 +14,7 @@ public class RendaDAO {
 
     public void registrarRenda(Renda renda) {
         StringBuilder query = new StringBuilder("INSERT INTO RENDA");
-        query.append("(titulo, valor, data, descricao, dta_add)");
+        query.append("(id_usuario, sequencia, titulo, valor, data, descricao, dta_add)");
         query.append(" VALUES(?, ?, ?, ?, ?)");
 
         Connection conn = null;
@@ -24,11 +24,13 @@ public class RendaDAO {
             conn = ConnectionFactory.createConnectionToMySql();
             pstm = conn.prepareStatement(query.toString());
 
-            pstm.setString(1, renda.getTitulo());
-            pstm.setDouble(2, renda.getValor());
-            pstm.setDate(3, (Date) renda.getData().getTime());
-            pstm.setString(4, renda.getDescricao());
-            pstm.setDate(5, (Date) renda.getDtaAdd().getTime());
+            pstm.setInt(1, (int) renda.getIdUsuario());
+            pstm.setInt(2, (int) renda.getSequencia());
+            pstm.setString(3, renda.getTitulo());
+            pstm.setDouble(4, renda.getValor());
+            pstm.setDate(5, null, renda.getData());
+            pstm.setString(6, renda.getDescricao());
+            pstm.setDate(7, null, renda.getDtaAdd());
 
             pstm.execute();
         } catch (Exception e) {
@@ -49,7 +51,7 @@ public class RendaDAO {
 
     public void alterarRenda(Renda renda) {
         StringBuilder query = new StringBuilder("UPDATE RENDA SET");
-        query.append(" titulo = ?, valor = ?, data = ?, descricao = ?, dta_add = ?");
+        query.append(" titulo = ?, valor = ?, data = ?, descricao = ?, dta_alt = ?");
         query.append(" WHERE id = ?");
 
         Connection conn = null;
@@ -61,9 +63,10 @@ public class RendaDAO {
 
             pstm.setString(1, renda.getTitulo());
             pstm.setDouble(2, renda.getValor());
-            pstm.setDate(3, (Date) renda.getData().getTime());
+            pstm.setDate(3, null, renda.getData());
             pstm.setString(4, renda.getDescricao());
-            pstm.setDate(5, (Date) renda.getDtaAdd().getTime());
+            pstm.setDate(5, null, renda.getDtaAdd());
+            pstm.setInt(6, (int) renda.getId());
 
             pstm.execute();
         } catch (Exception e) {
@@ -92,7 +95,7 @@ public class RendaDAO {
             conn = ConnectionFactory.createConnectionToMySql();
             pstm = conn.prepareStatement(query);
 
-            pstm.setLong(1, id);
+            pstm.setInt(1, (int) id);
 
             pstm.execute();
         } catch (Exception e) {
@@ -127,12 +130,15 @@ public class RendaDAO {
             while (rs.next()) {
                 Renda renda = new Renda();
 
-                renda.setId(rs.getLong("id"));
+                renda.setId(rs.getInt("id"));
+                renda.setIdUsuario(rs.getInt("id_usuario"));
+                renda.setSequencia(rs.getInt("sequencia"));
                 renda.setTitulo(rs.getString("titulo"));
                 renda.setValor(rs.getDouble("valor"));
                 renda.getData().setTime(rs.getDate("data"));
                 renda.setDescricao(rs.getString("descricao"));
                 renda.getDtaAdd().setTime(rs.getDate("dta_add"));
+                renda.getDtaAlt().setTime(rs.getDate("dta_alt"));
 
                 rendas.add(renda);
             }
@@ -174,12 +180,15 @@ public class RendaDAO {
 
             while (rs.next()) {
                 renda = new Renda();
-                renda.setId(rs.getLong("id"));
+                renda.setId(rs.getInt("id"));
+                renda.setIdUsuario(rs.getInt("id_usuario"));
+                renda.setSequencia(rs.getInt("sequencia"));
                 renda.setTitulo(rs.getString("titulo"));
                 renda.setValor(rs.getDouble("valor"));
                 renda.getData().setTime(rs.getDate("data"));
                 renda.setDescricao(rs.getString("descricao"));
                 renda.getDtaAdd().setTime(rs.getDate("dta_add"));
+                renda.getDtaAlt().setTime(rs.getDate("dta_alt"));
             }
         } catch (Exception e) {
             e.printStackTrace();

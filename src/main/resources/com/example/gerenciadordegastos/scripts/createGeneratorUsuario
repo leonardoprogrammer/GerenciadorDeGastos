@@ -1,5 +1,5 @@
-CREATE GENERATOR Gen_Usuario_Id;
+CREATE GENERATOR GEN_USUARIO_ID;
 
-CREATE TRIGGER TRIG_Usuario_Inclusao FOR USUARIO BEFORE INSERT AS begin
-                                                                    NEW.ID = GEN_ID(Gen_Usuario_Id, 1);
+CREATE TRIGGER TRIG_USUARIO_INCLUSAO FOR USUARIO BEFORE INSERT AS begin
+                                                                    NEW.ID = GEN_ID(GEN_USUARIO_ID, 1);
                                                                   end
