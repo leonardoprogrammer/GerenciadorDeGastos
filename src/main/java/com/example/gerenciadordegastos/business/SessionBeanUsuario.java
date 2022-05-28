@@ -15,7 +15,6 @@ public class SessionBeanUsuario {
     }
 
     public void registrarUsuario(Usuario usuario) {
-        usuario.setId(getGeneratorId());
         usuario.setDtaAdd(Calendar.getInstance());
         usuarioDAO.registrarUsuario(usuario);
     }

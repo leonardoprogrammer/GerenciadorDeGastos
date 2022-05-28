@@ -90,7 +90,7 @@ public class GastoDAO {
 
     public void registrarGasto(Gasto gasto) {
         StringBuilder query = new StringBuilder("INSERT INTO GASTO");
-        query.append("(id, titulo, valor, data, descricao, dta_add)");
+        query.append("(titulo, valor, data, descricao, dta_add)");
         query.append(" VALUES(?, ?, ?, ?, ?, ?)");
 
         Connection conn = null;
@@ -100,12 +100,11 @@ public class GastoDAO {
             conn = ConnectionFactory.createConnectionToMySql();
             pstm = conn.prepareStatement(query.toString());
 
-            pstm.setInt(1, (int) gasto.getId());
-            pstm.setString(2, gasto.getTitulo());
-            pstm.setDouble(3, gasto.getValor());
-            pstm.setDate(4, null, gasto.getData());
-            pstm.setString(5, gasto.getDescricao());
-            pstm.setDate(6, null, gasto.getDtaAdd());
+            pstm.setString(1, gasto.getTitulo());
+            pstm.setDouble(2, gasto.getValor());
+            pstm.setDate(3, null, gasto.getData());
+            pstm.setString(4, gasto.getDescricao());
+            pstm.setDate(5, null, gasto.getDtaAdd());
 
             pstm.execute();
         } catch (Exception e) {
@@ -206,12 +205,65 @@ public class GastoDAO {
                 Gasto gasto = new Gasto();
 
                 gasto.setId(rs.getInt("id"));
+                gasto.setIdUsuario(rs.getInt("id_usuario"));
+                gasto.setSequencia(rs.getInt("sequencia"));
                 gasto.setTitulo(rs.getString("titulo"));
                 gasto.setValor(rs.getDouble("valor"));
                 gasto.getData().setTime(rs.getDate("data"));
                 gasto.setDescricao(rs.getString("descricao"));
                 gasto.getDtaAdd().setTime(rs.getDate("dta_add"));
-                gasto.getDtaAdd().setTime(rs.getDate("dta_alt"));
+                gasto.getDtaAlt().setTime(rs.getDate("dta_alt"));
+
+                gastos.add(gasto);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (pstm != null) {
+                    pstm.close();
+                }
+                if (conn != null) {
+                    conn.close();
+                }
+                if (rs != null) {
+                    rs.close();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return gastos;
+    }
+
+    public List<Gasto> recuperarGastosPorUsuario(long idUsuario) {
+        String query = "SELECT * FROM GASTO WHERE id_usuario = ?";
+        List<Gasto> gastos = new ArrayList<>();
+
+        Connection conn = null;
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+
+        try {
+            conn = ConnectionFactory.createConnectionToMySql();
+            pstm = conn.prepareStatement(query);
+
+            pstm.setInt(1, (int) idUsuario);
+
+            rs = pstm.executeQuery();
+
+            while (rs.next()) {
+                Gasto gasto = new Gasto();
+
+                gasto.setId(rs.getInt("id"));
+                gasto.setIdUsuario(rs.getInt("id_usuario"));
+                gasto.setSequencia(rs.getInt("sequencia"));
+                gasto.setTitulo(rs.getString("titulo"));
+                gasto.setValor(rs.getDouble("valor"));
+                gasto.getData().setTime(rs.getDate("data"));
+                gasto.setDescricao(rs.getString("descricao"));
+                gasto.getDtaAdd().setTime(rs.getDate("dta_add"));
+                gasto.getDtaAlt().setTime(rs.getDate("dta_alt"));
 
                 gastos.add(gasto);
             }
@@ -253,13 +305,15 @@ public class GastoDAO {
 
             while (rs.next()) {
                 gasto = new Gasto();
-                gasto.setId(rs.getLong("id"));
+                gasto.setId(rs.getInt("id"));
+                gasto.setIdUsuario(rs.getInt("id_usuario"));
+                gasto.setSequencia(rs.getInt("sequencia"));
                 gasto.setTitulo(rs.getString("titulo"));
                 gasto.setValor(rs.getDouble("valor"));
                 gasto.getData().setTime(rs.getDate("data"));
                 gasto.setDescricao(rs.getString("descricao"));
                 gasto.getDtaAdd().setTime(rs.getDate("dta_add"));
-                gasto.getDtaAdd().setTime(rs.getDate("dta_alt"));
+                gasto.getDtaAlt().setTime(rs.getDate("dta_alt"));
             }
         } catch (Exception e) {
             e.printStackTrace();

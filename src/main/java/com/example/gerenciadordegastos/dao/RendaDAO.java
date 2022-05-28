@@ -4,13 +4,51 @@ import com.example.gerenciadordegastos.ConnectionFactory;
 import com.example.gerenciadordegastos.entity.Renda;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
 public class RendaDAO {
+
+    public long getProximaSequencia(long idUsuario) {
+        String query = "SELECT sequencia FROM RENDA WHERE id_usuario = ? ORDER BY sequencia DESC";
+        long ultSeq = 0;
+
+        Connection conn = null;
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+
+        try {
+            conn = ConnectionFactory.createConnectionToMySql();
+            pstm = conn.prepareStatement(query);
+
+            pstm.setInt(1, (int) idUsuario);
+
+            rs = pstm.executeQuery();
+
+            while (rs.next()) {
+                ultSeq = rs.getInt("sequencia");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (pstm != null) {
+                    pstm.close();
+                }
+                if (conn != null) {
+                    conn.close();
+                }
+                if (rs != null) {
+                    rs.close();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return ultSeq + 1;
+    }
 
     public void registrarRenda(Renda renda) {
         StringBuilder query = new StringBuilder("INSERT INTO RENDA");
@@ -162,8 +200,59 @@ public class RendaDAO {
         return rendas;
     }
 
+    public List<Renda> recuperarRendasPorUsuario(long idUsuario) {
+        String query = "SELECT * FROM RENDA WHERE id_usuario = ?";
+        List<Renda> rendas = new ArrayList<>();
+
+        Connection conn = null;
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+
+        try {
+            conn = ConnectionFactory.createConnectionToMySql();
+            pstm = conn.prepareStatement(query);
+
+            pstm.setInt(1, (int) idUsuario);
+
+            rs = pstm.executeQuery();
+
+            while (rs.next()) {
+                Renda renda = new Renda();
+
+                renda.setId(rs.getInt("id"));
+                renda.setIdUsuario(rs.getInt("id_usuario"));
+                renda.setSequencia(rs.getInt("sequencia"));
+                renda.setTitulo(rs.getString("titulo"));
+                renda.setValor(rs.getDouble("valor"));
+                renda.getData().setTime(rs.getDate("data"));
+                renda.setDescricao(rs.getString("descricao"));
+                renda.getDtaAdd().setTime(rs.getDate("dta_add"));
+                renda.getDtaAlt().setTime(rs.getDate("dta_alt"));
+
+                rendas.add(renda);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (pstm != null) {
+                    pstm.close();
+                }
+                if (conn != null) {
+                    conn.close();
+                }
+                if (rs != null) {
+                    rs.close();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return rendas;
+    }
+
     public Renda recuperarRendaPorId(long id) {
-        String query = "SELECT * FROM RENDA";
+        String query = "SELECT * FROM RENDA WHERE id = ?";
         Renda renda = new Renda();
 
         Connection conn = null;
@@ -174,7 +263,7 @@ public class RendaDAO {
             conn = ConnectionFactory.createConnectionToMySql();
             pstm = conn.prepareStatement(query);
 
-            pstm.setLong(1, id);
+            pstm.setInt(1, (int) id);
 
             rs = pstm.executeQuery();
 

@@ -19,7 +19,6 @@ public class SessionBeanGasto {
     }
 
     public void registrarGasto(Gasto gasto) {
-        gasto.setId(getGeneratorId());
         gasto.setSequencia(getProximaSequencia(gasto.getIdUsuario()));
         gasto.setDtaAdd(Calendar.getInstance());
         gastoDAO.registrarGasto(gasto);
@@ -36,6 +35,10 @@ public class SessionBeanGasto {
 
     public List<Gasto> recuperarTodosGastos() {
         return gastoDAO.recuperarTodosGastos();
+    }
+
+    public List<Gasto> recuperarGastosPorUsuario(long idUsuario) {
+        return gastoDAO.recuperarGastosPorUsuario(idUsuario);
     }
 
     public Gasto recuperarGastoPorId(long id) {
