@@ -3,6 +3,7 @@ package com.example.gerenciadordegastos.business;
 import com.example.gerenciadordegastos.dao.UsuarioDAO;
 import com.example.gerenciadordegastos.entity.Usuario;
 
+import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.List;
 
@@ -15,12 +16,17 @@ public class SessionBeanUsuario {
     }
 
     public void registrarUsuario(Usuario usuario) {
+<<<<<<< Updated upstream
         usuario.setDtaAdd(Calendar.getInstance());
+=======
+        usuario.setId(getGeneratorId());
+        usuario.setDtaAdd(new Timestamp(System.currentTimeMillis()));
+>>>>>>> Stashed changes
         usuarioDAO.registrarUsuario(usuario);
     }
 
     public void alterarUsuario(Usuario usuario) {
-        usuario.setDtaAdd(Calendar.getInstance());
+        usuario.setDtaAlt(new Timestamp(System.currentTimeMillis()));
         usuarioDAO.alterarUsuario(usuario);
     }
 

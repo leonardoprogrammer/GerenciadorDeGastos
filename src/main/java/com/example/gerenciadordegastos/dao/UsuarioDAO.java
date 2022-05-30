@@ -4,7 +4,6 @@ import com.example.gerenciadordegastos.ConnectionFactory;
 import com.example.gerenciadordegastos.entity.Usuario;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -61,6 +60,7 @@ public class UsuarioDAO {
             conn = ConnectionFactory.createConnectionToMySql();
             pstm = conn.prepareStatement(query.toString());
 
+<<<<<<< Updated upstream
             pstm.setString(1, usuario.getUsername());
             pstm.setString(2, usuario.getPassword());
             pstm.setString(3, usuario.getNome());
@@ -69,6 +69,17 @@ public class UsuarioDAO {
             pstm.setString(6, usuario.getTelefone());
             pstm.setDate(7, null, usuario.getNascimento());
             pstm.setDate(8, null, usuario.getDtaAdd());
+=======
+            pstm.setInt(1,(int) usuario.getId());
+            pstm.setString(2, usuario.getUsername());
+            pstm.setString(3, usuario.getPassword());
+            pstm.setString(4, usuario.getNome());
+            pstm.setString(5, usuario.getCpf());
+            pstm.setString(6, usuario.getEmail());
+            pstm.setString(7, usuario.getTelefone());
+            pstm.setDate(8, usuario.getNascimento());
+            pstm.setTimestamp(9, usuario.getDtaAdd());
+>>>>>>> Stashed changes
 
             pstm.execute();
         } catch (Exception e) {
@@ -106,8 +117,8 @@ public class UsuarioDAO {
             pstm.setString(4, usuario.getCpf());
             pstm.setString(5, usuario.getEmail());
             pstm.setString(6, usuario.getTelefone());
-            pstm.setDate(7, null, usuario.getNascimento());
-            pstm.setDate(8, null, usuario.getDtaAlt());
+            pstm.setDate(7, usuario.getNascimento());
+            pstm.setTimestamp(8, usuario.getDtaAlt());
             pstm.setInt(9, (int) usuario.getId());
 
             pstm.execute();
@@ -181,9 +192,9 @@ public class UsuarioDAO {
                 usuario.setCpf(rs.getString("cpf"));
                 usuario.setEmail(rs.getString("email"));
                 usuario.setTelefone(rs.getString("telefone"));
-                usuario.getNascimento().setTime(rs.getDate("nascimento"));
-                usuario.getDtaAdd().setTime(rs.getDate("dta_add"));
-                usuario.getDtaAlt().setTime(rs.getDate("dta_alt"));
+                usuario.setNascimento(rs.getDate("nascimento"));
+                usuario.setDtaAdd(rs.getTimestamp("dta_add"));
+                usuario.setDtaAlt(rs.getTimestamp("dta_alt"));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -230,9 +241,9 @@ public class UsuarioDAO {
                 usuario.setCpf(rs.getString("cpf"));
                 usuario.setEmail(rs.getString("email"));
                 usuario.setTelefone(rs.getString("telefone"));
-                usuario.getNascimento().setTime(rs.getDate("nascimento"));
-                usuario.getDtaAdd().setTime(rs.getDate("dta_add"));
-                usuario.getDtaAlt().setTime(rs.getDate("dta_alt"));
+                usuario.setNascimento(rs.getDate("nascimento"));
+                usuario.setDtaAdd(rs.getTimestamp("dta_add"));
+                usuario.setDtaAlt(rs.getTimestamp("dta_alt"));
 
                 usuarios.add(usuario);
             }

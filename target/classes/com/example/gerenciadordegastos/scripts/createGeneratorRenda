@@ -1,0 +1,5 @@
+CREATE GENERATOR GEN_RENDA_ID;
+
+CREATE TRIGGER TRIG_RENDA_INCLUSAO FOR RENDA BEFORE INSERT AS begin
+                                                                NEW.ID = GEN_ID(GEN_RENDA_ID, 1);
+                                                              end

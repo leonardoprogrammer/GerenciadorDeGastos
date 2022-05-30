@@ -1,26 +1,41 @@
 package com.example.gerenciadordegastos.entity;
 
-import java.util.Calendar;
+import java.sql.Date;
+import java.sql.Timestamp;
 
 public class Renda {
     private long id;
     private long idUsuario;
+<<<<<<< Updated upstream
     private long sequencia;
+=======
+>>>>>>> Stashed changes
     private String titulo;
     private double valor;
-    private Calendar data;
+    private Date data;
     private String descricao;
+<<<<<<< Updated upstream
     private Calendar dtaAdd;
     private Calendar dtaAlt;
+=======
+    private Timestamp dtaAdd;
+    private Timestamp dtaAlt;
+>>>>>>> Stashed changes
 
     public Renda() {
 
     }
 
+<<<<<<< Updated upstream
     public Renda(long id, long idUsuario, long sequencia, String titulo, double valor, Calendar data, String descricao, Calendar dtaAdd, Calendar dtaAlt) {
         this.id = id;
         this.idUsuario = idUsuario;
         this.sequencia = sequencia;
+=======
+    public Renda(long id, long idUsuario, String titulo, double valor, Date data, String descricao, Timestamp dtaAdd, Timestamp dtaAlt) {
+        this.id = id;
+        this.idUsuario = idUsuario;
+>>>>>>> Stashed changes
         this.titulo = titulo;
         this.valor = valor;
         this.data = data;
@@ -45,6 +60,7 @@ public class Renda {
         this.idUsuario = idUsuario;
     }
 
+<<<<<<< Updated upstream
     public long getSequencia() {
         return sequencia;
     }
@@ -53,6 +69,8 @@ public class Renda {
         this.sequencia = sequencia;
     }
 
+=======
+>>>>>>> Stashed changes
     public String getTitulo() {
         return titulo;
     }
@@ -69,11 +87,11 @@ public class Renda {
         this.valor = valor;
     }
 
-    public Calendar getData() {
+    public Date getData() {
         return data;
     }
 
-    public void setData(Calendar data) {
+    public void setData(Date data) {
         this.data = data;
     }
 
@@ -85,19 +103,27 @@ public class Renda {
         this.descricao = descricao;
     }
 
-    public Calendar getDtaAdd() {
+    public Timestamp getDtaAdd() {
         return dtaAdd;
     }
 
-    public void setDtaAdd(Calendar dtaAdd) {
+    public void setDtaAdd(Timestamp dtaAdd) {
         this.dtaAdd = dtaAdd;
     }
 
+<<<<<<< Updated upstream
     public Calendar getDtaAlt() {
         return dtaAlt;
     }
 
     public void setDtaAlt(Calendar dtaAlt) {
+=======
+    public Timestamp getDtaAlt() {
+        return dtaAlt;
+    }
+
+    public void setDtaAlt(Timestamp dtaAlt) {
+>>>>>>> Stashed changes
         this.dtaAlt = dtaAlt;
     }
 }

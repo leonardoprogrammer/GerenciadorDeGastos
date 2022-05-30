@@ -52,8 +52,13 @@ public class RendaDAO {
 
     public void registrarRenda(Renda renda) {
         StringBuilder query = new StringBuilder("INSERT INTO RENDA");
+<<<<<<< Updated upstream
         query.append("(id_usuario, sequencia, titulo, valor, data, descricao, dta_add)");
         query.append(" VALUES(?, ?, ?, ?, ?)");
+=======
+        query.append("(id_usuario, titulo, valor, data, descricao, dta_add)");
+        query.append(" VALUES(?, ?, ?, ?, ?, ?)");
+>>>>>>> Stashed changes
 
         Connection conn = null;
         PreparedStatement pstm = null;
@@ -63,12 +68,20 @@ public class RendaDAO {
             pstm = conn.prepareStatement(query.toString());
 
             pstm.setInt(1, (int) renda.getIdUsuario());
+<<<<<<< Updated upstream
             pstm.setInt(2, (int) renda.getSequencia());
             pstm.setString(3, renda.getTitulo());
             pstm.setDouble(4, renda.getValor());
             pstm.setDate(5, null, renda.getData());
             pstm.setString(6, renda.getDescricao());
             pstm.setDate(7, null, renda.getDtaAdd());
+=======
+            pstm.setString(2, renda.getTitulo());
+            pstm.setDouble(3, renda.getValor());
+            pstm.setDate(4, renda.getData());
+            pstm.setString(5, renda.getDescricao());
+            pstm.setTimestamp(6, renda.getDtaAdd());
+>>>>>>> Stashed changes
 
             pstm.execute();
         } catch (Exception e) {
@@ -101,9 +114,15 @@ public class RendaDAO {
 
             pstm.setString(1, renda.getTitulo());
             pstm.setDouble(2, renda.getValor());
+<<<<<<< Updated upstream
             pstm.setDate(3, null, renda.getData());
             pstm.setString(4, renda.getDescricao());
             pstm.setDate(5, null, renda.getDtaAdd());
+=======
+            pstm.setDate(3, renda.getData());
+            pstm.setString(4, renda.getDescricao());
+            pstm.setTimestamp(5, renda.getDtaAlt());
+>>>>>>> Stashed changes
             pstm.setInt(6, (int) renda.getId());
 
             pstm.execute();
@@ -170,11 +189,15 @@ public class RendaDAO {
 
                 renda.setId(rs.getInt("id"));
                 renda.setIdUsuario(rs.getInt("id_usuario"));
+<<<<<<< Updated upstream
                 renda.setSequencia(rs.getInt("sequencia"));
+=======
+>>>>>>> Stashed changes
                 renda.setTitulo(rs.getString("titulo"));
                 renda.setValor(rs.getDouble("valor"));
-                renda.getData().setTime(rs.getDate("data"));
+                renda.setData(rs.getDate("data"));
                 renda.setDescricao(rs.getString("descricao"));
+<<<<<<< Updated upstream
                 renda.getDtaAdd().setTime(rs.getDate("dta_add"));
                 renda.getDtaAlt().setTime(rs.getDate("dta_alt"));
 
@@ -228,6 +251,10 @@ public class RendaDAO {
                 renda.setDescricao(rs.getString("descricao"));
                 renda.getDtaAdd().setTime(rs.getDate("dta_add"));
                 renda.getDtaAlt().setTime(rs.getDate("dta_alt"));
+=======
+                renda.setDtaAdd(rs.getTimestamp("dta_add"));
+                renda.setDtaAlt(rs.getTimestamp("dta_alt"));
+>>>>>>> Stashed changes
 
                 rendas.add(renda);
             }
@@ -271,13 +298,21 @@ public class RendaDAO {
                 renda = new Renda();
                 renda.setId(rs.getInt("id"));
                 renda.setIdUsuario(rs.getInt("id_usuario"));
+<<<<<<< Updated upstream
                 renda.setSequencia(rs.getInt("sequencia"));
+=======
+>>>>>>> Stashed changes
                 renda.setTitulo(rs.getString("titulo"));
                 renda.setValor(rs.getDouble("valor"));
-                renda.getData().setTime(rs.getDate("data"));
+                renda.setData(rs.getDate("data"));
                 renda.setDescricao(rs.getString("descricao"));
+<<<<<<< Updated upstream
                 renda.getDtaAdd().setTime(rs.getDate("dta_add"));
                 renda.getDtaAlt().setTime(rs.getDate("dta_alt"));
+=======
+                renda.setDtaAdd(rs.getTimestamp("dta_add"));
+                renda.setDtaAlt(rs.getTimestamp("dta_alt"));
+>>>>>>> Stashed changes
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -297,5 +332,55 @@ public class RendaDAO {
             }
         }
         return renda;
+    }
+
+    public List<Renda> recuperarRendasPorUsuario(long idUsuario) {
+        String query = "SELECT * FROM RENDA WHERE id_usuario = ?";
+        List<Renda> rendas = new ArrayList<>();
+
+        Connection conn = null;
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+
+        try {
+            conn = ConnectionFactory.createConnectionToMySql();
+            pstm = conn.prepareStatement(query);
+
+            pstm.setInt(1, (int) idUsuario);
+
+            rs = pstm.executeQuery();
+
+            while (rs.next()) {
+                Renda renda = new Renda();
+
+                renda.setId(rs.getInt("id"));
+                renda.setIdUsuario(rs.getInt("id_usuario"));
+                renda.setTitulo(rs.getString("titulo"));
+                renda.setValor(rs.getDouble("valor"));
+                renda.setData(rs.getDate("data"));
+                renda.setDescricao(rs.getString("descricao"));
+                renda.setDtaAdd(rs.getTimestamp("dta_add"));
+                renda.setDtaAlt(rs.getTimestamp("dta_alt"));
+
+                rendas.add(renda);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (pstm != null) {
+                    pstm.close();
+                }
+                if (conn != null) {
+                    conn.close();
+                }
+                if (rs != null) {
+                    rs.close();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return rendas;
     }
 }

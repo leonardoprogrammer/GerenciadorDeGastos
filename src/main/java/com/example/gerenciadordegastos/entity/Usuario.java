@@ -1,7 +1,7 @@
 package com.example.gerenciadordegastos.entity;
 
-import java.util.Calendar;
-import java.util.GregorianCalendar;
+import java.sql.Date;
+import java.sql.Timestamp;
 
 public class Usuario {
     private long id;
@@ -11,15 +11,15 @@ public class Usuario {
     private String cpf;
     private String email;
     private String telefone;
-    private Calendar nascimento = new GregorianCalendar();
-    private Calendar dtaAdd = new GregorianCalendar();
-    private Calendar dtaAlt = new GregorianCalendar();
+    private Date nascimento;
+    private Timestamp dtaAdd;
+    private Timestamp dtaAlt;
 
     public Usuario() {
 
     }
 
-    public Usuario(long id, String username, String password, String nome, String cpf, String email, String telefone, Calendar nascimento, Calendar dtaAdd, Calendar dtaAlt) {
+    public Usuario(long id, String username, String password, String nome, String cpf, String email, String telefone, Date nascimento, Timestamp dtaAdd, Timestamp dtaAlt) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -88,27 +88,27 @@ public class Usuario {
         this.telefone = telefone;
     }
 
-    public Calendar getNascimento() {
+    public Date getNascimento() {
         return nascimento;
     }
 
-    public void setNascimento(Calendar nascimento) {
+    public void setNascimento(Date nascimento) {
         this.nascimento = nascimento;
     }
 
-    public Calendar getDtaAdd() {
+    public Timestamp getDtaAdd() {
         return dtaAdd;
     }
 
-    public void setDtaAdd(Calendar dtaAdd) {
+    public void setDtaAdd(Timestamp dtaAdd) {
         this.dtaAdd = dtaAdd;
     }
 
-    public Calendar getDtaAlt() {
+    public Timestamp getDtaAlt() {
         return dtaAlt;
     }
 
-    public void setDtaAlt(Calendar dtaAlt) {
+    public void setDtaAlt(Timestamp dtaAlt) {
         this.dtaAlt = dtaAlt;
     }
 }

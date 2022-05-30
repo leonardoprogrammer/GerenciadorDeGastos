@@ -1,26 +1,25 @@
 package com.example.gerenciadordegastos.entity;
 
-import java.util.Calendar;
+import java.sql.Date;
+import java.sql.Timestamp;
 
 public class Gasto {
     private long id;
     private long idUsuario;
-    private long sequencia;
     private String titulo;
     private double valor;
-    private Calendar data;
+    private Date data;
     private String descricao;
-    private Calendar dtaAdd;
-    private Calendar dtaAlt;
+    private Timestamp dtaAdd;
+    private Timestamp dtaAlt;
 
     public Gasto() {
 
     }
 
-    public Gasto(long id, long idUsuario, long sequencia, String titulo, double valor, Calendar data, String descricao, Calendar dtaAdd, Calendar dtaAlt) {
+    public Gasto(long id, long idUsuario, String titulo, double valor, Date data, String descricao, Timestamp dtaAdd, Timestamp dtaAlt) {
         this.id = id;
         this.idUsuario = idUsuario;
-        this.sequencia = sequencia;
         this.titulo = titulo;
         this.valor = valor;
         this.data = data;
@@ -45,14 +44,6 @@ public class Gasto {
         this.idUsuario = idUsuario;
     }
 
-    public long getSequencia() {
-        return sequencia;
-    }
-
-    public void setSequencia(long sequencia) {
-        this.sequencia = sequencia;
-    }
-
     public String getTitulo() {
         return titulo;
     }
@@ -69,11 +60,11 @@ public class Gasto {
         this.valor = valor;
     }
 
-    public Calendar getData() {
+    public Date getData() {
         return data;
     }
 
-    public void setData(Calendar data) {
+    public void setData(Date data) {
         this.data = data;
     }
 
@@ -85,19 +76,19 @@ public class Gasto {
         this.descricao = descricao;
     }
 
-    public Calendar getDtaAdd() {
+    public Timestamp getDtaAdd() {
         return dtaAdd;
     }
 
-    public void setDtaAdd(Calendar dtaAdd) {
+    public void setDtaAdd(Timestamp dtaAdd) {
         this.dtaAdd = dtaAdd;
     }
 
-    public Calendar getDtaAlt() {
+    public Timestamp getDtaAlt() {
         return dtaAlt;
     }
 
-    public void setDtaAlt(Calendar dtaAlt) {
+    public void setDtaAlt(Timestamp dtaAlt) {
         this.dtaAlt = dtaAlt;
     }
 }

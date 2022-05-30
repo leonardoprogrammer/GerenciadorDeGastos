@@ -6,6 +6,6 @@ CREATE TABLE USUARIO (
     email varchar(60),
     telefone varchar(20),
     nascimento date,
-    dta_add date,
-    dta_alt date
+    dta_add timestamp,
+    dta_alt timestamp
 );

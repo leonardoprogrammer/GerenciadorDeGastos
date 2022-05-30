@@ -1,7 +1,7 @@
 package com.example.gerenciadordegastos;
 
+import com.example.gerenciadordegastos.business.SessionBeanRenda;
 import com.example.gerenciadordegastos.business.SessionBeanUsuario;
-import com.example.gerenciadordegastos.dao.UsuarioDAO;
 import com.example.gerenciadordegastos.entity.Usuario;
 import com.example.gerenciadordegastos.enums.ThemeMode;
 import javafx.animation.TranslateTransition;
@@ -20,8 +20,6 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -79,14 +77,12 @@ public class PainelController implements Initializable {
     private StackPane stackPane;
 
     private SessionBeanUsuario sessionBeanUsuario = new SessionBeanUsuario();
+    private SessionBeanRenda sessionBeanRenda = new SessionBeanRenda();
     private ThemeMode themeMode;
     private Usuario usuario;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        usuario = new Usuario(16, "teste", "teste", "Usuario Alterado", "99999999999", "teste@gmail.com", "17994492245", Calendar.getInstance(), null, null);
-        sessionBeanUsuario.deletarUsuario(19);
-        sessionBeanUsuario.deletarUsuario(21);
         lblMenuClose.setVisible(false);
 
         carregarFragment("ui/frgTimeline.fxml");

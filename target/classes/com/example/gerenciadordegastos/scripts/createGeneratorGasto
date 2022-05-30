@@ -1,0 +1,5 @@
+CREATE GENERATOR GEN_GASTO_ID;
+
+CREATE TRIGGER TRIG_GASTO_INCLUSAO FOR GASTO BEFORE INSERT AS begin
+                                                                NEW.ID = GEN_ID(GEN_GASTO_ID, 1);
+                                                              end
