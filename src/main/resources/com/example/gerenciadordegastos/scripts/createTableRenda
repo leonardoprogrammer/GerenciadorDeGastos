@@ -1,20 +1,10 @@
 CREATE TABLE RENDA (
     id integer not null,
     id_usuario integer not null,
-<<<<<<< Updated upstream
-    sequencia integer not null,
-    titulo varchar(100),
-    valor double precision,
-    data date,
-    descricao varchar(255),
-    dta_add date,
-    dta_alt date
-=======
     titulo varchar(200),
     valor double precision,
     data date,
     descricao varchar(255),
     dta_add timestamp,
     dta_alt timestamp
->>>>>>> Stashed changes
 );

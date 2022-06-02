@@ -51,7 +51,7 @@ public class UsuarioDAO {
     public void registrarUsuario(Usuario usuario) {
         StringBuilder query = new StringBuilder("INSERT INTO USUARIO");
         query.append("(username, password, nome, cpf, email, telefone, nascimento, dta_add)");
-        query.append(" VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        query.append(" VALUES(?, ?, ?, ?, ?, ?, ?, ?)");
 
         Connection conn = null;
         PreparedStatement pstm = null;
@@ -60,26 +60,14 @@ public class UsuarioDAO {
             conn = ConnectionFactory.createConnectionToMySql();
             pstm = conn.prepareStatement(query.toString());
 
-<<<<<<< Updated upstream
             pstm.setString(1, usuario.getUsername());
             pstm.setString(2, usuario.getPassword());
             pstm.setString(3, usuario.getNome());
             pstm.setString(4, usuario.getCpf());
             pstm.setString(5, usuario.getEmail());
             pstm.setString(6, usuario.getTelefone());
-            pstm.setDate(7, null, usuario.getNascimento());
-            pstm.setDate(8, null, usuario.getDtaAdd());
-=======
-            pstm.setInt(1,(int) usuario.getId());
-            pstm.setString(2, usuario.getUsername());
-            pstm.setString(3, usuario.getPassword());
-            pstm.setString(4, usuario.getNome());
-            pstm.setString(5, usuario.getCpf());
-            pstm.setString(6, usuario.getEmail());
-            pstm.setString(7, usuario.getTelefone());
-            pstm.setDate(8, usuario.getNascimento());
-            pstm.setTimestamp(9, usuario.getDtaAdd());
->>>>>>> Stashed changes
+            pstm.setDate(7, usuario.getNascimento());
+            pstm.setTimestamp(8, usuario.getDtaAdd());
 
             pstm.execute();
         } catch (Exception e) {

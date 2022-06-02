@@ -1,0 +1,5 @@
+CREATE GENERATOR GEN_PREFERENCIAS_ID;
+
+CREATE TRIGGER TRIG_PREFERENCIAS_INCLUSAO FOR PREFERENCIAS BEFORE INSERT AS begin
+                                                                NEW.ID = GEN_ID(GEN_PREFERENCIAS_ID, 1);
+                                                              end

@@ -16,12 +16,7 @@ public class SessionBeanUsuario {
     }
 
     public void registrarUsuario(Usuario usuario) {
-<<<<<<< Updated upstream
-        usuario.setDtaAdd(Calendar.getInstance());
-=======
-        usuario.setId(getGeneratorId());
         usuario.setDtaAdd(new Timestamp(System.currentTimeMillis()));
->>>>>>> Stashed changes
         usuarioDAO.registrarUsuario(usuario);
     }
 
