@@ -1,7 +1,7 @@
 package com.example.gerenciadordegastos.business;
 
 import com.example.gerenciadordegastos.dao.RendaDAO;
-import com.example.gerenciadordegastos.entity.Renda;
+import com.example.gerenciadordegastos.model.entity.Renda;
 
 import java.sql.Timestamp;
 import java.util.List;

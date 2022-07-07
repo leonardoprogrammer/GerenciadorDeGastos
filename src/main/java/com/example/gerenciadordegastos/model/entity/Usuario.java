@@ -1,4 +1,4 @@
-package com.example.gerenciadordegastos.entity;
+package com.example.gerenciadordegastos.model.entity;
 
 import java.sql.Date;
 import java.sql.Timestamp;
@@ -17,6 +17,13 @@ public class Usuario {
 
     public Usuario() {
 
+    }
+
+    public Usuario(String username, String password, String nome, String email) {
+        this.username = username;
+        this.password = password;
+        this.nome = nome;
+        this.email = email;
     }
 
     public Usuario(long id, String username, String password, String nome, String cpf, String email, String telefone, Date nascimento, Timestamp dtaAdd, Timestamp dtaAlt) {

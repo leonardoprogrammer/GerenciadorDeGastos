@@ -1,4 +1,4 @@
-package com.example.gerenciadordegastos.entity;
+package com.example.gerenciadordegastos.model.entity;
 
 import java.sql.Date;
 import java.sql.Timestamp;

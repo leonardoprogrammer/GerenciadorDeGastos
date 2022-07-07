@@ -1,24 +1,40 @@
 package com.example.gerenciadordegastos.controller;
 
+import com.example.gerenciadordegastos.EntradaController;
+import com.example.gerenciadordegastos.PainelController;
 import com.example.gerenciadordegastos.business.SessionBeanAutenticacao;
 import com.example.gerenciadordegastos.business.SessionBeanUsuario;
-import com.example.gerenciadordegastos.entity.Usuario;
+import com.example.gerenciadordegastos.model.entity.Usuario;
+import com.example.gerenciadordegastos.util.GFAlert;
+import com.example.gerenciadordegastos.util.LoadScreen;
 import com.example.gerenciadordegastos.vo.AutenticacaoVO;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
-import java.awt.*;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class LoginController implements Initializable {
 
-    private SessionBeanAutenticacao sessionBeanAutenticacao;
-    private SessionBeanUsuario sessionBeanUsuario;
+    private SessionBeanAutenticacao sessionBeanAutenticacao = new SessionBeanAutenticacao();
+    private SessionBeanUsuario sessionBeanUsuario = new SessionBeanUsuario();
     private AutenticacaoVO auth;
     private Usuario usuario;
+
+    @FXML
+    private AnchorPane anchorPane;
+
+    @FXML
+    private VBox vBox;
 
     @FXML
     private TextField txtUsername;
@@ -27,41 +43,53 @@ public class LoginController implements Initializable {
     private PasswordField txtPassword;
 
     @FXML
+    private Label lblRecuperarAcesso;
+
+    @FXML
     private Button btnEntrar;
-
-    @FXML
-    private Button btnCriarConta;
-
-    @FXML
-    private Button btnRecuperarLogin;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         btnEntrar.setOnMouseClicked(event -> {
-            if (isCamposValidos()) {
-                auth = sessionBeanAutenticacao.checkLogin(txtUsername.getText(), txtPassword.getText());
-                if (auth.isSucess()) {
-                    usuario = sessionBeanUsuario.recuperarUsuarioPorId(auth.getIdRetorno());
-                    //fecha tela de login e abre painel da aplicação
-                } else {
-                    //exibe msg
-                }
+            entrar();
+        });
+
+        anchorPane.setOnKeyPressed((KeyEvent t) -> {
+            if (t.getCode() == KeyCode.ENTER) {
+                entrar();
             }
         });
 
-        btnCriarConta.setOnMouseClicked(event -> {
+        lblRecuperarAcesso.setOnMouseClicked(event -> {
             //
         });
+    }
 
-        btnRecuperarLogin.setOnMouseClicked(event -> {
-            //
-        });
+    public void entrar() {
+        if (isCamposValidos()) {
+            auth = sessionBeanAutenticacao.checkLogin(txtUsername.getText(), txtPassword.getText());
+            if (auth.isSucess()) {
+                usuario = sessionBeanUsuario.recuperarUsuarioPorId(auth.getIdRetorno());
+
+                try {
+                    LoadScreen.openWindow("ui/painel.fxml", new PainelController(usuario));
+
+                    Stage thisWindow = (Stage) btnEntrar.getScene().getWindow();
+                    thisWindow.close();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+            } else {
+                GFAlert.makeAlertError("Login incorreto!");
+            }
+        }
     }
 
     public boolean isCamposValidos() {
         if ((txtUsername.getText() == null || txtUsername.getText().trim().isEmpty())
                 || (txtPassword.getText() == null || txtPassword.getText().trim().isEmpty())) {
-            //exibe msg "Preencha todos os campos!"
+            GFAlert.makeAlertWarning("Preencha todos os campos!");
             return false;
         }
         return true;

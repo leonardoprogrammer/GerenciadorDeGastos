@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="anchorPane" prefHeight="394.0" prefWidth="406.0" style="-fx-background-color: #0c2b54;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gerenciadordegastos.controller.NovaContaController">
+   <children>
+      <VBox fx:id="vBox" alignment="CENTER" layoutX="66.0" layoutY="79.0" prefHeight="187.0" prefWidth="274.0" AnchorPane.bottomAnchor="128.0" AnchorPane.leftAnchor="66.0" AnchorPane.rightAnchor="66.0" AnchorPane.topAnchor="79.0">
+         <children>
+            <TextField fx:id="txtUsername" promptText="Nome de Usuário" style="-fx-background-color: #0c3d54;">
+               <font>
+                  <Font size="14.0" />
+               </font></TextField>
+            <Pane prefHeight="120.0" prefWidth="200.0" />
+            <TextField fx:id="txtName" promptText="Nome completo" style="-fx-background-color: #0c3d54;">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <Pane prefHeight="120.0" prefWidth="200.0" />
+            <TextField fx:id="txtEmail" promptText="Email" style="-fx-background-color: #0c3d54;">
+               <font>
+                  <Font size="14.0" />
+               </font></TextField>
+            <Pane prefHeight="120.0" prefWidth="200.0" />
+            <PasswordField fx:id="txtPassword" promptText="Senha" style="-fx-background-color: #0c3d54;">
+               <font>
+                  <Font size="14.0" />
+               </font></PasswordField>
+            <Pane prefHeight="120.0" prefWidth="200.0" />
+            <PasswordField fx:id="txtPasswordValid" promptText="Repita sua senha" style="-fx-background-color: #0c3d54;">
+               <font>
+                  <Font size="14.0" />
+               </font></PasswordField>
+         </children>
+      </VBox>
+      <Button fx:id="btnCriarConta" alignment="CENTER" contentDisplay="CENTER" layoutX="148.0" layoutY="302.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="111.0" style="-fx-background-color: #19d181;" text="Criar conta" textAlignment="CENTER" textFill="#333333" wrapText="true">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

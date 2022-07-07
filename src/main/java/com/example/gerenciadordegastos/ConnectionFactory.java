@@ -8,7 +8,7 @@ public class ConnectionFactory {
     private static final String DB_USERNAME = "SYSDBA";
     private static final String DB_PASSWORD = "masterkey";
 
-    private static final String DB_URL = "jdbc:firebirdsql:localhost/3050:C:\\GerenciadorDeGastos\\data\\db\\DBGG.FDB";
+    private static final String DB_URL = "jdbc:firebirdsql:localhost/3050:C:\\GerenciadorDeGastos\\data\\db\\DBGF.FDB";
 
     public static Connection createConnectionToMySql() throws Exception {
         Class.forName("org.firebirdsql.jdbc.FBDriver");

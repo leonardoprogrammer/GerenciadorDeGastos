@@ -1,6 +1,6 @@
 package com.example.gerenciadordegastos.controller;
 
-import com.example.gerenciadordegastos.entity.Gasto;
+import com.example.gerenciadordegastos.model.entity.Gasto;
 import javafx.fxml.Initializable;
 
 import java.net.URL;

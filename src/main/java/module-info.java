@@ -8,4 +8,9 @@ module com.example.gerenciadordegastos {
     opens com.example.gerenciadordegastos to javafx.fxml;
     opens com.example.gerenciadordegastos.controller to javafx.fxml;
     exports com.example.gerenciadordegastos;
+    opens com.example.gerenciadordegastos.vo to javafx.fxml;
+    exports com.example.gerenciadordegastos.util;
+    opens com.example.gerenciadordegastos.util to javafx.fxml;
+    exports com.example.gerenciadordegastos.util.exception;
+    opens com.example.gerenciadordegastos.util.exception to javafx.fxml;
 }

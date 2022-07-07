@@ -1,7 +1,7 @@
 package com.example.gerenciadordegastos.dao;
 
 import com.example.gerenciadordegastos.ConnectionFactory;
-import com.example.gerenciadordegastos.entity.Renda;
+import com.example.gerenciadordegastos.model.entity.Renda;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

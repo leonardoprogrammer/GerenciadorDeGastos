@@ -2,8 +2,9 @@ package com.example.gerenciadordegastos;
 
 import com.example.gerenciadordegastos.business.SessionBeanRenda;
 import com.example.gerenciadordegastos.business.SessionBeanUsuario;
-import com.example.gerenciadordegastos.entity.Usuario;
+import com.example.gerenciadordegastos.model.entity.Usuario;
 import com.example.gerenciadordegastos.enums.ThemeMode;
+import com.example.gerenciadordegastos.util.LoadScreen;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,6 +17,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
@@ -163,8 +165,18 @@ public class PainelController implements Initializable {
         });
 
         btnSair.setOnMouseClicked(event -> {
-            // DESLOGA O USUÁRIO E VOLTA PARA A TELA DE LOGIN
+            try {
+                LoadScreen.openWindow("ui/login.fxml", new EntradaController(), 400, 500);
+                Stage thisWindow = (Stage) btnSair.getScene().getWindow();
+                thisWindow.close();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
         });
+    }
+
+    public PainelController(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     private void carregarFragment(String fragment) {

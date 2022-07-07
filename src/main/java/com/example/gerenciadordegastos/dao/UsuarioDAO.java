@@ -1,7 +1,7 @@
 package com.example.gerenciadordegastos.dao;
 
 import com.example.gerenciadordegastos.ConnectionFactory;
-import com.example.gerenciadordegastos.entity.Usuario;
+import com.example.gerenciadordegastos.model.entity.Usuario;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -50,8 +50,8 @@ public class UsuarioDAO {
 
     public void registrarUsuario(Usuario usuario) {
         StringBuilder query = new StringBuilder("INSERT INTO USUARIO");
-        query.append("(username, password, nome, cpf, email, telefone, nascimento, dta_add)");
-        query.append(" VALUES(?, ?, ?, ?, ?, ?, ?, ?)");
+        query.append("(username, password, nome, email, dta_add)");
+        query.append(" VALUES(?, ?, ?, ?, ?)");
 
         Connection conn = null;
         PreparedStatement pstm = null;
@@ -63,11 +63,8 @@ public class UsuarioDAO {
             pstm.setString(1, usuario.getUsername());
             pstm.setString(2, usuario.getPassword());
             pstm.setString(3, usuario.getNome());
-            pstm.setString(4, usuario.getCpf());
-            pstm.setString(5, usuario.getEmail());
-            pstm.setString(6, usuario.getTelefone());
-            pstm.setDate(7, usuario.getNascimento());
-            pstm.setTimestamp(8, usuario.getDtaAdd());
+            pstm.setString(4, usuario.getEmail());
+            pstm.setTimestamp(5, usuario.getDtaAdd());
 
             pstm.execute();
         } catch (Exception e) {

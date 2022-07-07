@@ -1,10 +1,9 @@
 package com.example.gerenciadordegastos.business;
 
 import com.example.gerenciadordegastos.dao.UsuarioDAO;
-import com.example.gerenciadordegastos.entity.Usuario;
+import com.example.gerenciadordegastos.model.entity.Usuario;
 
 import java.sql.Timestamp;
-import java.util.Calendar;
 import java.util.List;
 
 public class SessionBeanUsuario {

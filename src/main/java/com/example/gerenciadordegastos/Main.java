@@ -13,10 +13,12 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("ui/painel.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1000, 500);
-        stage.setTitle("Gerenciador de Gastos");
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("ui/login.fxml"));
+        fxmlLoader.setController(new EntradaController());
+        Scene scene = new Scene(fxmlLoader.load(), 400, 500);
+        stage.setTitle("Gerenciador Financeiro");
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.show();
     }
 
