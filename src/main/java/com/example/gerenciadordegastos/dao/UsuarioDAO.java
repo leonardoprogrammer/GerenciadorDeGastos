@@ -85,7 +85,7 @@ public class UsuarioDAO {
 
     public void alterarUsuario(Usuario usuario) {
         StringBuilder query = new StringBuilder("UPDATE USUARIO SET");
-        query.append(" username = ?, password = ?, nome = ?, cpf = ?, email = ?,");
+        query.append(" username = ?,  nome = ?, cpf = ?, email = ?,");
         query.append(" telefone = ?, nascimento = ?, dta_alt = ?");
         query.append(" WHERE id = ?");
 
@@ -97,14 +97,13 @@ public class UsuarioDAO {
             pstm = conn.prepareStatement(query.toString());
 
             pstm.setString(1, usuario.getUsername());
-            pstm.setString(2, usuario.getPassword());
-            pstm.setString(3, usuario.getNome());
-            pstm.setString(4, usuario.getCpf());
-            pstm.setString(5, usuario.getEmail());
-            pstm.setString(6, usuario.getTelefone());
-            pstm.setDate(7, usuario.getNascimento());
-            pstm.setTimestamp(8, usuario.getDtaAlt());
-            pstm.setInt(9, (int) usuario.getId());
+            pstm.setString(2, usuario.getNome());
+            pstm.setString(3, usuario.getCpf());
+            pstm.setString(4, usuario.getEmail());
+            pstm.setString(5, usuario.getTelefone());
+            pstm.setDate(6, usuario.getNascimento());
+            pstm.setTimestamp(7, usuario.getDtaAlt());
+            pstm.setInt(8, (int) usuario.getId());
 
             pstm.execute();
         } catch (Exception e) {

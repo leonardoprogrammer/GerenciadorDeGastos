@@ -2,6 +2,8 @@ package com.example.gerenciadordegastos;
 
 import com.example.gerenciadordegastos.business.SessionBeanRenda;
 import com.example.gerenciadordegastos.business.SessionBeanUsuario;
+import com.example.gerenciadordegastos.controller.GastosController;
+import com.example.gerenciadordegastos.controller.PerfilController;
 import com.example.gerenciadordegastos.model.entity.Usuario;
 import com.example.gerenciadordegastos.enums.ThemeMode;
 import com.example.gerenciadordegastos.util.LoadScreen;
@@ -87,7 +89,9 @@ public class PainelController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         lblMenuClose.setVisible(false);
 
-        carregarFragment("ui/frgTimeline.fxml");
+        lblTitulo.setText("Olá, " + usuario.getNome());
+
+        carregarFragment("ui/frgTimeline.fxml", null);
 
         alterarTema(ThemeMode.LIGHT_MODE);
 
@@ -133,35 +137,35 @@ public class PainelController implements Initializable {
         });
 
         btnTimeline.setOnMouseClicked(event -> {
-            carregarFragment("ui/frgTimeline.fxml");
+            carregarFragment("ui/frgTimeline.fxml", null);
         });
 
         btnGastos.setOnMouseClicked(event -> {
-            carregarFragment("ui/frgGastos.fxml");
+            carregarFragment("ui/frgGastos.fxml", new GastosController());
         });
 
         btnRenda.setOnMouseClicked(event -> {
-            carregarFragment("ui/frgRenda.fxml");
+            carregarFragment("ui/frgRenda.fxml", null);
         });
 
         btnDashboard.setOnMouseClicked(event -> {
-            carregarFragment("ui/frgDashboard.fxml");
+            carregarFragment("ui/frgDashboard.fxml", null);
         });
 
         btnRelatorios.setOnMouseClicked(event -> {
-            carregarFragment("ui/frgRelatorios.fxml");
+            carregarFragment("ui/frgRelatorios.fxml", null);
         });
 
         btnInicio.setOnMouseClicked(event -> {
-            carregarFragment("ui/frgTimeline.fxml");
+            carregarFragment("ui/frgTimeline.fxml", null);
         });
 
         btnPerfil.setOnMouseClicked(event -> {
-            carregarFragment("ui/frgPerfil.fxml");
+            carregarFragment("ui/frgPerfil.fxml", new PerfilController(usuario));
         });
 
         btnPreferencias.setOnMouseClicked(event -> {
-            carregarFragment("ui/frgPreferencias.fxml");
+            carregarFragment("ui/frgPreferencias.fxml", null);
         });
 
         btnSair.setOnMouseClicked(event -> {
@@ -179,13 +183,18 @@ public class PainelController implements Initializable {
         this.usuario = usuario;
     }
 
-    private void carregarFragment(String fragment) {
+    private void carregarFragment(String fragment, Object constructor) {
         try {
-            Parent fxml = FXMLLoader.load(getClass().getResource(fragment));
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(fragment));
+            if (constructor != null) {
+                fxmlLoader.setController(constructor);
+            }
+            Parent fxml = fxmlLoader.load();
             stackPane.getChildren().removeAll();
             stackPane.getChildren().setAll(fxml);
         } catch (IOException ex) {
             Logger.getLogger(PainelController.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
         }
     }
 

@@ -4,14 +4,46 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #3832a8;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gerenciadordegastos.controller.PerfilController">
-
-    <children>
-        <Label layoutX="243.0" layoutY="174.0" text="PERFIL" textFill="#fffdfd">
-            <font>
-                <Font name="System Bold" size="36.0" />
-            </font>
-        </Label>
-    </children>
-
+<AnchorPane prefHeight="435.0" prefWidth="824.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label fx:id="lblUsername" layoutX="54.0" layoutY="55.0" prefHeight="17.0" prefWidth="144.0" text="Nome de Usuário">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <TextField fx:id="txtUsername" editable="false" layoutX="47.0" layoutY="85.0" prefHeight="25.0" prefWidth="212.0" text="fulano.silva" />
+      <Label fx:id="lblNome" layoutX="54.0" layoutY="133.0" prefHeight="17.0" prefWidth="144.0" text="Nome completo">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <TextField fx:id="txtNome" layoutX="47.0" layoutY="163.0" prefHeight="25.0" prefWidth="300.0" />
+      <Label fx:id="lblCpf" layoutX="377.0" layoutY="133.0" text="CPF">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <TextField fx:id="txtCpf" layoutX="370.0" layoutY="163.0" prefHeight="25.0" prefWidth="167.0" />
+      <Label fx:id="lblEmail" layoutX="54.0" layoutY="209.0" text="E-mail">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <TextField fx:id="txtEmail" layoutX="47.0" layoutY="239.0" prefHeight="25.0" prefWidth="300.0" />
+      <Label fx:id="lblTelefone" layoutX="377.0" layoutY="209.0" text="Telefone">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <TextField fx:id="txtTelefone" layoutX="370.0" layoutY="239.0" prefHeight="25.0" prefWidth="167.0" />
+      <Label fx:id="lblNascimento" layoutX="54.0" layoutY="285.0" text="Data de nascimento">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <DatePicker fx:id="dtNascimento" layoutX="47.0" layoutY="315.0" />
+      <Button fx:id="btnAlterarSenha" layoutX="370.0" layoutY="315.0" mnemonicParsing="false" style="-fx-background-color: #282a35;" text="Alterar Senha" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <Button fx:id="btnSalvar" layoutX="472.0" layoutY="315.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: #282a35;" text="Salvar" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <Label fx:id="txtUltimaAtt" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="373.0" layoutY="355.0" prefHeight="17.0" prefWidth="167.0" text="Última atualização: 08/07/2022" textAlignment="RIGHT" textFill="#666666" />
+   </children>
 </AnchorPane>

@@ -1,6 +1,5 @@
 package com.example.gerenciadordegastos.controller;
 
-import com.example.gerenciadordegastos.EntradaController;
 import com.example.gerenciadordegastos.PainelController;
 import com.example.gerenciadordegastos.business.SessionBeanAutenticacao;
 import com.example.gerenciadordegastos.business.SessionBeanUsuario;
@@ -9,9 +8,7 @@ import com.example.gerenciadordegastos.util.GFAlert;
 import com.example.gerenciadordegastos.util.LoadScreen;
 import com.example.gerenciadordegastos.vo.AutenticacaoVO;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;

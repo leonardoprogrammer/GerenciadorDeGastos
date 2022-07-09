@@ -15,7 +15,7 @@ public class Main extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("ui/login.fxml"));
         fxmlLoader.setController(new EntradaController());
-        Scene scene = new Scene(fxmlLoader.load(), 400, 500);
+        Scene scene = new Scene(fxmlLoader.load(), 406, 500);
         stage.setTitle("Gerenciador Financeiro");
         stage.setScene(scene);
         stage.setResizable(false);

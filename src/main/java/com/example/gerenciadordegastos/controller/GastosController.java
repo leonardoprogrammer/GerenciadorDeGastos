@@ -15,4 +15,8 @@ public class GastosController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //
     }
+
+    public GastosController() {
+
+    }
 }
