@@ -122,6 +122,37 @@ public class UsuarioDAO {
         }
     }
 
+    public void alterarSenha(Usuario usuario) {
+        String query = "UPDATE USUARIO SET password = ?, dta_alt = ? WHERE id = ?";
+
+        Connection conn = null;
+        PreparedStatement pstm = null;
+
+        try {
+            conn = ConnectionFactory.createConnectionToMySql();
+            pstm = conn.prepareStatement(query);
+
+            pstm.setString(1, usuario.getPassword());
+            pstm.setTimestamp(2, usuario.getDtaAlt());
+            pstm.setInt(3, (int) usuario.getId());
+
+            pstm.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (pstm != null) {
+                    pstm.close();
+                }
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     public void deletarUsuario(long id) {
         String query = "DELETE FROM USUARIO WHERE id = ?";
 

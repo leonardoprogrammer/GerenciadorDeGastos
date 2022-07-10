@@ -24,6 +24,11 @@ public class SessionBeanUsuario {
         usuarioDAO.alterarUsuario(usuario);
     }
 
+    public void alterarSenha(Usuario usuario) {
+        usuario.setDtaAlt(new Timestamp(System.currentTimeMillis()));
+        usuarioDAO.alterarSenha(usuario);
+    }
+
     public void deletarUsuario(long id) {
         usuarioDAO.deletarUsuario(id);
     }
