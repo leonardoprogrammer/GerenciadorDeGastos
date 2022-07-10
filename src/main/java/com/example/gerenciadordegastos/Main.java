@@ -1,5 +1,6 @@
 package com.example.gerenciadordegastos;
 
+import com.example.gerenciadordegastos.util.Constantes;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,7 +16,7 @@ public class Main extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("ui/login.fxml"));
         fxmlLoader.setController(new EntradaController());
-        Scene scene = new Scene(fxmlLoader.load(), 406, 500);
+        Scene scene = new Scene(fxmlLoader.load(), Constantes.HEIGHT_WINDOW_LOGIN, Constantes.WIDTH_WINDOW_LOGIN);
         stage.setTitle("Gerenciador Financeiro");
         stage.setScene(scene);
         stage.setResizable(false);

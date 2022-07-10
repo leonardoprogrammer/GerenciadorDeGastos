@@ -6,6 +6,7 @@ import com.example.gerenciadordegastos.controller.GastosController;
 import com.example.gerenciadordegastos.controller.PerfilController;
 import com.example.gerenciadordegastos.model.entity.Usuario;
 import com.example.gerenciadordegastos.enums.ThemeMode;
+import com.example.gerenciadordegastos.util.Constantes;
 import com.example.gerenciadordegastos.util.LoadScreen;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
@@ -170,7 +171,7 @@ public class PainelController implements Initializable {
 
         btnSair.setOnMouseClicked(event -> {
             try {
-                LoadScreen.openWindow("ui/login.fxml", new EntradaController(), 400, 500);
+                LoadScreen.openWindow("ui/login.fxml", new EntradaController(), Constantes.HEIGHT_WINDOW_LOGIN, Constantes.WIDTH_WINDOW_LOGIN);
                 Stage thisWindow = (Stage) btnSair.getScene().getWindow();
                 thisWindow.close();
             } catch (IOException ex) {
