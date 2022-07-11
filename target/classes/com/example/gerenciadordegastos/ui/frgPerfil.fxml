@@ -36,11 +36,11 @@
             <Font name="System Bold" size="12.0" />
          </font></Label>
       <DatePicker fx:id="dtNascimento" layoutX="47.0" layoutY="315.0" />
-      <Button fx:id="btnAlterarSenha" layoutX="370.0" layoutY="315.0" mnemonicParsing="false" style="-fx-background-color: #282a35;" text="Alterar Senha" textFill="WHITE">
+      <Button fx:id="btnAlterarSenha" layoutX="370.0" layoutY="315.0" mnemonicParsing="false" style="-fx-background-color: #282a35;" text="Alterar Senha" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
-      <Button fx:id="btnSalvar" layoutX="472.0" layoutY="315.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: #282a35;" text="Salvar" textFill="WHITE">
+      <Button fx:id="btnSalvar" layoutX="472.0" layoutY="315.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: #282a35;" text="Salvar" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>

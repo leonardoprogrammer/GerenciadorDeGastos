@@ -2,16 +2,57 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #a83232;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
-
-    <children>
-        <Label layoutX="230.0" layoutY="174.0" text="GASTOS" textFill="#fffdfd">
-            <font>
-                <Font name="System Bold" size="36.0" />
-            </font>
-        </Label>
-    </children>
-
+<AnchorPane prefHeight="435.0" prefWidth="824.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label fx:id="lblTitulo" layoutX="40.0" layoutY="19.0" text="Título">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <TextField fx:id="txtTitulo" layoutX="33.0" layoutY="38.0" prefHeight="25.0" prefWidth="333.0" promptText="Ex: Aluguel, Refeição, Dívida..." />
+      <Label fx:id="lblValor" layoutX="40.0" layoutY="65.0" text="Valor (R$)">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <TextField fx:id="txtValor" alignment="CENTER_RIGHT" layoutX="33.0" layoutY="85.0" promptText="Ex: 1.250,90" />
+      <Label fx:id="lblData" layoutX="198.0" layoutY="65.0" text="Data">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <DatePicker fx:id="dtData" layoutX="190.0" layoutY="85.0" promptText="Data do pagamento" />
+      <Label fx:id="lblDescricao" layoutX="400.0" layoutY="19.0" text="Descrição">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="txtDescricao" layoutX="394.0" layoutY="38.0" prefHeight="76.0" prefWidth="265.0" promptText="Adicione uma descrição, se necessário..." />
+      <Button fx:id="btnLimparCampos" layoutX="675.0" layoutY="38.0" mnemonicParsing="false" style="-fx-background-color: #282a35;" text="Limpar campos" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <Button fx:id="btnAdicionar" layoutX="675.0" layoutY="82.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: #282a35;" text="Adicionar" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <Line endX="640.0" fill="#282a35" layoutX="141.0" layoutY="151.0" startX="-100.0" stroke="#282a35" />
+      <TableView fx:id="tableGastos" editable="true" layoutX="33.0" layoutY="158.0" prefHeight="218.0" prefWidth="755.0">
+        <columns>
+          <TableColumn fx:id="columnTitulo" prefWidth="216.0" sortable="false" text="Título" />
+          <TableColumn fx:id="columnValor" prefWidth="122.0" text="Valor (R$)" />
+            <TableColumn fx:id="columnDescricao" prefWidth="299.0" sortable="false" text="Descrição" />
+            <TableColumn fx:id="columnData" prefWidth="117.0" text="Data" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnExcluirGasto" layoutX="675.0" layoutY="384.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="113.0" style="-fx-background-color: #282a35;" text="Excluir gasto" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <Button fx:id="btnAlterarGasto" layoutX="546.0" layoutY="384.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="113.0" style="-fx-background-color: #282a35;" text="Alterar gasto" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+   </children>
 </AnchorPane>

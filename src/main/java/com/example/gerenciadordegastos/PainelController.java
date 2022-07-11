@@ -142,7 +142,7 @@ public class PainelController implements Initializable {
         });
 
         btnGastos.setOnMouseClicked(event -> {
-            carregarFragment("ui/frgGastos.fxml", new GastosController());
+            carregarFragment("ui/frgGastos.fxml", new GastosController(usuario));
         });
 
         btnRenda.setOnMouseClicked(event -> {
