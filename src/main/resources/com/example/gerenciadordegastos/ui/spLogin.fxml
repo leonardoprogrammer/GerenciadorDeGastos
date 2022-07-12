@@ -28,7 +28,7 @@
                </children>
             </Pane>
          </children></VBox>
-      <Button fx:id="btnEntrar" layoutX="148.0" layoutY="284.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" style="-fx-background-color: #19d181;" text="Entrar" textFill="#333333">
+      <Button fx:id="btnEntrar" layoutX="148.0" layoutY="284.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" style="-fx-background-color: #19d181; -fx-background-radius: 15;" text="Entrar" textFill="#333333">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>

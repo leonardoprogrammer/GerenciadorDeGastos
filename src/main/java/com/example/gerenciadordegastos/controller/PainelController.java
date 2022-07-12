@@ -137,7 +137,7 @@ public class PainelController implements Initializable {
         });
 
         btnTimeline.setOnMouseClicked(event -> {
-            carregarFragment("ui/frgTimeline.fxml", null);
+            carregarFragment("ui/frgTimeline.fxml", new TimelineController(usuario));
         });
 
         btnGastos.setOnMouseClicked(event -> {
@@ -149,15 +149,15 @@ public class PainelController implements Initializable {
         });
 
         btnDashboard.setOnMouseClicked(event -> {
-            carregarFragment("ui/frgDashboard.fxml", null);
+            carregarFragment("ui/frgDashboard.fxml", new DashboardController(usuario));
         });
 
         btnRelatorios.setOnMouseClicked(event -> {
-            carregarFragment("ui/frgRelatorios.fxml", null);
+            carregarFragment("ui/frgRelatorios.fxml", new RelatoriosController(usuario));
         });
 
         btnInicio.setOnMouseClicked(event -> {
-            carregarFragment("ui/frgTimeline.fxml", null);
+            carregarFragment("ui/frgTimeline.fxml", new TimelineController(usuario));
         });
 
         btnPerfil.setOnMouseClicked(event -> {
@@ -165,7 +165,7 @@ public class PainelController implements Initializable {
         });
 
         btnPreferencias.setOnMouseClicked(event -> {
-            carregarFragment("ui/frgPreferencias.fxml", null);
+            carregarFragment("ui/frgPreferencias.fxml", new PreferenciasController(usuario));
         });
 
         btnSair.setOnMouseClicked(event -> {
