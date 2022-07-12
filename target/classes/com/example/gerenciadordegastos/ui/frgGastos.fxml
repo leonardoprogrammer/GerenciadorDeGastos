@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
@@ -16,7 +17,7 @@
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Label>
-      <TextField fx:id="txtValor" alignment="CENTER_RIGHT" layoutX="33.0" layoutY="85.0" promptText="Ex: 1.250,90" />
+      <TextField fx:id="txtValor" alignment="CENTER_RIGHT" layoutX="33.0" layoutY="85.0" promptText="Valor" />
       <Label fx:id="lblData" layoutX="198.0" layoutY="65.0" text="Data">
          <font>
             <Font name="System Bold" size="12.0" />
@@ -31,23 +32,40 @@
       <Button fx:id="btnLimparCampos" layoutX="675.0" layoutY="38.0" mnemonicParsing="false" style="-fx-background-color: #282a35;" text="Limpar campos" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
-         </font></Button>
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
       <Button fx:id="btnAdicionar" layoutX="675.0" layoutY="82.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: #282a35;" text="Adicionar" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
-         </font></Button>
-      <Line endX="640.0" fill="#282a35" layoutX="141.0" layoutY="152.0" startX="-100.0" stroke="#282a35" />
-      <TableView fx:id="tableGastos" editable="true" fixedCellSize="4.0" layoutX="33.0" layoutY="159.0" prefHeight="217.0" prefWidth="755.0">
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Line endX="640.0" fill="#282a35" layoutX="141.0" layoutY="151.0" startX="-100.0" stroke="#282a35" />
+      <TableView fx:id="tableGastos" editable="true" layoutX="33.0" layoutY="158.0" prefHeight="218.0" prefWidth="755.0">
         <columns>
           <TableColumn fx:id="columnTitulo" prefWidth="216.0" sortable="false" text="Título" />
-          <TableColumn fx:id="columnValor" prefWidth="122.0" text="Valor (R$)" />
+          <TableColumn fx:id="columnValor" prefWidth="122.0" style="-fx-alignment: CENTER-RIGHT;" text="Valor (R$)" />
             <TableColumn fx:id="columnDescricao" prefWidth="299.0" sortable="false" text="Descrição" />
-            <TableColumn fx:id="columnData" prefWidth="117.0" text="Data" />
+            <TableColumn fx:id="columnData" prefWidth="117.0" style="-fx-alignment: CENTER;" text="Data" />
         </columns>
       </TableView>
       <Button fx:id="btnExcluirGasto" layoutX="675.0" layoutY="384.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="113.0" style="-fx-background-color: #282a35;" text="Excluir gasto" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
-         </font></Button>
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Button fx:id="btnAlterarGasto" layoutX="546.0" layoutY="384.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="113.0" style="-fx-background-color: #282a35;" text="Alterar gasto" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
    </children>
 </AnchorPane>

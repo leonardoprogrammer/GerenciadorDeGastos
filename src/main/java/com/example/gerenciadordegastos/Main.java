@@ -1,12 +1,11 @@
 package com.example.gerenciadordegastos;
 
+import com.example.gerenciadordegastos.controller.EntradaController;
 import com.example.gerenciadordegastos.util.Constantes;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 import java.io.IOException;
 

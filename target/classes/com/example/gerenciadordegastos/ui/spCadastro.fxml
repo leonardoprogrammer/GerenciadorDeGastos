@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
@@ -8,28 +9,28 @@
    <children>
       <VBox fx:id="vBox" alignment="CENTER" layoutX="66.0" layoutY="79.0" prefHeight="187.0" prefWidth="274.0" AnchorPane.bottomAnchor="128.0" AnchorPane.leftAnchor="66.0" AnchorPane.rightAnchor="66.0" AnchorPane.topAnchor="79.0">
          <children>
-            <TextField fx:id="txtUsername" promptText="Nome de Usuário" style="-fx-background-color: #0c3d54;">
+            <TextField fx:id="txtUsername" promptText="Nome de Usuário" style="-fx-background-color: #0c3d54; -fx-text-fill: #d9d9d9;">
                <font>
                   <Font size="14.0" />
                </font></TextField>
             <Pane prefHeight="120.0" prefWidth="200.0" />
-            <TextField fx:id="txtName" promptText="Nome completo" style="-fx-background-color: #0c3d54;">
+            <TextField fx:id="txtName" promptText="Nome completo" style="-fx-background-color: #0c3d54; -fx-text-fill: #d9d9d9;">
                <font>
                   <Font size="14.0" />
                </font>
             </TextField>
             <Pane prefHeight="120.0" prefWidth="200.0" />
-            <TextField fx:id="txtEmail" promptText="Email" style="-fx-background-color: #0c3d54;">
+            <TextField fx:id="txtEmail" promptText="Email" style="-fx-background-color: #0c3d54; -fx-text-fill: #d9d9d9;">
                <font>
                   <Font size="14.0" />
                </font></TextField>
             <Pane prefHeight="120.0" prefWidth="200.0" />
-            <PasswordField fx:id="txtPassword" promptText="Senha" style="-fx-background-color: #0c3d54;">
+            <PasswordField fx:id="txtPassword" promptText="Senha" style="-fx-background-color: #0c3d54; -fx-text-fill: #d9d9d9;">
                <font>
                   <Font size="14.0" />
                </font></PasswordField>
             <Pane prefHeight="120.0" prefWidth="200.0" />
-            <PasswordField fx:id="txtPasswordValid" promptText="Repita sua senha" style="-fx-background-color: #0c3d54;">
+            <PasswordField fx:id="txtPasswordValid" promptText="Repita sua senha" style="-fx-background-color: #0c3d54; -fx-text-fill: #d9d9d9;">
                <font>
                   <Font size="14.0" />
                </font></PasswordField>
@@ -39,6 +40,9 @@
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
    </children>
 </AnchorPane>

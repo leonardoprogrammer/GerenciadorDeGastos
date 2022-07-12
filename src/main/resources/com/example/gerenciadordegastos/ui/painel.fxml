@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.*?>
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
@@ -22,6 +23,9 @@
                            <HBox.margin>
                               <Insets left="5.0" right="5.0" />
                            </HBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </ImageView>
                         <Separator maxHeight="-Infinity" orientation="VERTICAL" prefHeight="15.0" prefWidth="0.0" />
                         <Label fx:id="lblTitulo" prefHeight="17.0" prefWidth="350.0" text="Olá, Fulano da Silva" textFill="WHITE">
@@ -51,6 +55,9 @@
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Label>
                   <Label fx:id="lblMenuClose" layoutX="14.0" layoutY="37.0" text="MENU" textFill="#8a8888">
                      <font>
@@ -63,6 +70,9 @@
                            </image>
                         </ImageView>
                      </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Label>
                   <HBox alignment="CENTER" layoutX="274.0" layoutY="1.0" prefHeight="43.0" prefWidth="525.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
                      <children>
@@ -74,6 +84,9 @@
                                  </image>
                               </ImageView>
                            </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </Button>
                         <Button fx:id="btnGastos" mnemonicParsing="false" prefHeight="38.0" prefWidth="125.0" style="-fx-background-color: WHITE;" text="Gastos" textFill="#4a4a4a">
                            <graphic>
@@ -81,28 +94,40 @@
                                  <image>
                                     <Image url="@../icons/minus_48px.png" />
                                  </image></ImageView>
-                           </graphic></Button>
+                           </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Button>
                         <Button fx:id="btnRenda" mnemonicParsing="false" prefHeight="38.0" prefWidth="136.0" style="-fx-background-color: WHITE;" text="Renda" textFill="#4a4a4a">
                            <graphic>
                               <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../icons/Plus%20+_48px.png" />
                                  </image></ImageView>
-                           </graphic></Button>
+                           </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Button>
                         <Button fx:id="btnDashboard" mnemonicParsing="false" prefHeight="38.0" prefWidth="140.0" style="-fx-background-color: WHITE;" text="Dashboard" textFill="#4a4a4a">
                            <graphic>
                               <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../icons/statistics_24px.png" />
                                  </image></ImageView>
-                           </graphic></Button>
+                           </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Button>
                         <Button fx:id="btnRelatorios" mnemonicParsing="false" prefHeight="38.0" prefWidth="140.0" style="-fx-background-color: WHITE;" text="Relatórios" textFill="#4a4a4a">
                            <graphic>
                               <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../icons/Payment%20Check_24px.png" />
                                  </image></ImageView>
-                           </graphic></Button>
+                           </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Button>
                      </children>
                   </HBox>
                </children>
@@ -123,6 +148,9 @@
                                     <Image url="@../icons/home.png" />
                                  </image></ImageView>
                            </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </Button>
                         <Button fx:id="btnPerfil" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="38.0" prefWidth="176.0" style="-fx-background-color: #0A4969;" text="Meu perfil" textFill="WHITE">
                            <font>
@@ -134,6 +162,9 @@
                                     <Image url="@../icons/male_user_32px.png" />
                                  </image></ImageView>
                            </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </Button>
                         <Button fx:id="btnPreferencias" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="38.0" prefWidth="176.0" style="-fx-background-color: #0A4969;" text="Preferências" textFill="WHITE">
                            <font>
@@ -144,7 +175,10 @@
                                  <image>
                                     <Image url="@../icons/settings_32px.png" />
                                  </image></ImageView>
-                           </graphic></Button>
+                           </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Button>
                         <Button fx:id="btnSair" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="38.0" prefWidth="176.0" style="-fx-background-color: #0A4969;" text="Sair" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="15.0" />
@@ -154,7 +188,10 @@
                                  <image>
                                     <Image url="@../icons/exit_32px.png" />
                                  </image></ImageView>
-                           </graphic></Button>
+                           </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Button>
                      </children>
                   </VBox>
                </children>

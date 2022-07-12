@@ -1,5 +1,5 @@
 CREATE TABLE GASTO (
-    id integer not null,
+    id integer not null primary key,
     id_usuario integer not null,
     titulo varchar(200),
     valor double precision,

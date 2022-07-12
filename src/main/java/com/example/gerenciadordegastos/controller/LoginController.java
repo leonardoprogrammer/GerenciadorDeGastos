@@ -1,6 +1,5 @@
 package com.example.gerenciadordegastos.controller;
 
-import com.example.gerenciadordegastos.PainelController;
 import com.example.gerenciadordegastos.business.SessionBeanAutenticacao;
 import com.example.gerenciadordegastos.business.SessionBeanUsuario;
 import com.example.gerenciadordegastos.model.entity.Usuario;

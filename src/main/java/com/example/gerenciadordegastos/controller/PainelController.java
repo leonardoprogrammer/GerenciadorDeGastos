@@ -1,9 +1,8 @@
-package com.example.gerenciadordegastos;
+package com.example.gerenciadordegastos.controller;
 
+import com.example.gerenciadordegastos.Main;
 import com.example.gerenciadordegastos.business.SessionBeanRenda;
 import com.example.gerenciadordegastos.business.SessionBeanUsuario;
-import com.example.gerenciadordegastos.controller.GastosController;
-import com.example.gerenciadordegastos.controller.PerfilController;
 import com.example.gerenciadordegastos.model.entity.Usuario;
 import com.example.gerenciadordegastos.enums.ThemeMode;
 import com.example.gerenciadordegastos.util.Constantes;
@@ -205,11 +204,11 @@ public class PainelController implements Initializable {
         } else {
             switch (themeMode) {
                 case LIGHT_MODE:
-                    imgLightMode.setImage(new Image(getClass().getResource("icons/moon_symbol_30px.png").toString()));
+                    imgLightMode.setImage(new Image(Main.class.getResource("icons/moon_symbol_30px.png").toString()));
                     themeMode = ThemeMode.DARK_MODE;
                     break;
                 case DARK_MODE:
-                    imgLightMode.setImage(new Image(getClass().getResource("icons/sun_30px.png").toString()));
+                    imgLightMode.setImage(new Image(Main.class.getResource("icons/sun_30px.png").toString()));
                     themeMode = ThemeMode.LIGHT_MODE;
                     break;
             }

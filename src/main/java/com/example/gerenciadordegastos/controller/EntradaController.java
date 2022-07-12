@@ -1,5 +1,6 @@
-package com.example.gerenciadordegastos;
+package com.example.gerenciadordegastos.controller;
 
+import com.example.gerenciadordegastos.Main;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -49,7 +50,7 @@ public class EntradaController implements Initializable {
 
     private void carregarFragment(String fragment) {
         try {
-            Parent fxml = FXMLLoader.load(getClass().getResource(fragment));
+            Parent fxml = FXMLLoader.load(Main.class.getResource(fragment));
             stackPane.getChildren().removeAll();
             stackPane.getChildren().setAll(fxml);
         } catch (IOException ex) {

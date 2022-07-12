@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
@@ -39,11 +40,17 @@
       <Button fx:id="btnAlterarSenha" layoutX="370.0" layoutY="315.0" mnemonicParsing="false" style="-fx-background-color: #282a35;" text="Alterar Senha" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
-         </font></Button>
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
       <Button fx:id="btnSalvar" layoutX="472.0" layoutY="315.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: #282a35;" text="Salvar" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
-         </font></Button>
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
       <Label fx:id="txtUltimaAtt" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="325.0" layoutY="355.0" prefHeight="17.0" prefWidth="212.0" text="Última atualização: 08/07/2022" textAlignment="RIGHT" textFill="#666666" />
       <Pane fx:id="paneAltPassword" layoutX="568.0" layoutY="107.0" prefHeight="242.0" prefWidth="237.0" style="-fx-background-color: #4d5166; -fx-background-radius: 10; -fx-border-color: #282a35; -fx-border-radius: 10; -fx-border-width: 3;">
          <children>
@@ -66,12 +73,18 @@
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
                   <Pane prefHeight="100.0" prefWidth="29.0" />
                   <Button fx:id="btnAlterar" mnemonicParsing="false" prefHeight="25.0" prefWidth="64.0" style="-fx-background-color: #258e25;" text="Alterar" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
                </children>
             </HBox>
