@@ -145,7 +145,7 @@ public class PainelController implements Initializable {
         });
 
         btnRenda.setOnMouseClicked(event -> {
-            carregarFragment("ui/frgRenda.fxml", null);
+            carregarFragment("ui/frgRenda.fxml", new RendaController(usuario));
         });
 
         btnDashboard.setOnMouseClicked(event -> {

@@ -1,17 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #33E857;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gerenciadordegastos.controller.RendaController">
-
-    <children>
-        <Label layoutX="239.0" layoutY="174.0" text="RENDA" textFill="#fffdfd">
-            <font>
-                <Font name="System Bold" size="36.0" />
-            </font>
-        </Label>
-    </children>
-
+<AnchorPane prefHeight="435.0" prefWidth="824.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label fx:id="lblTitulo" layoutX="40.0" layoutY="19.0" text="Título">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <TextField fx:id="txtTitulo" layoutX="33.0" layoutY="38.0" prefHeight="25.0" prefWidth="333.0" promptText="Ex: Salário da empresa, Faturamento da lojinha..." />
+      <Label fx:id="lblValor" layoutX="40.0" layoutY="65.0" text="Valor (R$)">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <TextField fx:id="txtValor" alignment="CENTER_RIGHT" layoutX="33.0" layoutY="85.0" promptText="Valor" />
+      <Label fx:id="lblData" layoutX="198.0" layoutY="65.0" text="Data">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <DatePicker fx:id="dtData" layoutX="190.0" layoutY="85.0" promptText="Data do recebimento" />
+      <Label fx:id="lblDescricao" layoutX="400.0" layoutY="19.0" text="Descrição">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <TextArea fx:id="txtDescricao" layoutX="394.0" layoutY="38.0" prefHeight="76.0" prefWidth="265.0" promptText="Adicione uma descrição, se necessário..." />
+      <Button fx:id="btnLimparCampos" alignment="CENTER" layoutX="675.0" layoutY="38.0" mnemonicParsing="false" style="-fx-background-color: #282a35;" text="Limpar campos" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Button fx:id="btnAdicionar" alignment="CENTER" layoutX="675.0" layoutY="82.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: #282a35;" text="Adicionar" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <TableView fx:id="tableRendas" layoutX="33.0" layoutY="158.0" prefHeight="218.0" prefWidth="755.0">
+        <columns>
+          <TableColumn fx:id="columnTitulo" editable="false" prefWidth="216.0" sortable="false" text="Título" />
+          <TableColumn fx:id="columnValor" editable="false" prefWidth="122.0" style="-fx-alignment: CENTER-RIGHT;" text="Valor (R$)" />
+            <TableColumn fx:id="columnDescricao" editable="false" prefWidth="299.0" sortable="false" text="Descrição" />
+            <TableColumn fx:id="columnData" editable="false" prefWidth="117.0" style="-fx-alignment: CENTER;" text="Data" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+      <Button fx:id="btnAlterarRenda" alignment="CENTER" layoutX="546.0" layoutY="384.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="113.0" style="-fx-background-color: #282a35;" text="Alterar renda" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Button fx:id="btnExcluirRenda" alignment="CENTER" layoutX="675.0" layoutY="384.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="113.0" style="-fx-background-color: #282a35;" text="Excluir renda" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Line endX="640.0" fill="#282a35" layoutX="141.0" layoutY="151.0" startX="-100.0" stroke="#282a35" />
+   </children>
 </AnchorPane>

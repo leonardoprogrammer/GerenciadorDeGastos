@@ -24,7 +24,7 @@ public class SessionBeanRenda {
         rendaDAO.alterarRenda(renda);
     }
 
-    public void deletarVenda(long id) {
+    public void deletarRenda(long id) {
         rendaDAO.deletarRenda(id);
     }
 

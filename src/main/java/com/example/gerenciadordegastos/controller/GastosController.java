@@ -69,8 +69,7 @@ public class GastosController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        btnAlterarGasto.setDisable(true);
-        btnExcluirGasto.setDisable(true);
+        desabilitarBotoesTabela(true);
 
         definirDataMaximaData();
 
@@ -85,8 +84,7 @@ public class GastosController implements Initializable {
         });
 
         tableGastos.setOnMouseClicked(event -> {
-            btnAlterarGasto.setDisable(false);
-            btnExcluirGasto.setDisable(false);
+            desabilitarBotoesTabela(false);
         });
 
         btnAlterarGasto.setOnMouseClicked(event -> {
@@ -125,8 +123,7 @@ public class GastosController implements Initializable {
         try {
             Gasto gastoDelete = (Gasto) tableGastos.getSelectionModel().getSelectedItem();
             sessionBeanGasto.deletarGasto(gastoDelete.getId());
-            btnAlterarGasto.setDisable(true);
-            btnExcluirGasto.setDisable(true);
+            desabilitarBotoesTabela(true);
             atualizarTabela();
         } catch (Exception e) {
             e.printStackTrace();
@@ -186,6 +183,11 @@ public class GastosController implements Initializable {
             };
         });
         dtData.setValue(maxDate);
+    }
+
+    public void desabilitarBotoesTabela(boolean logica) {
+        btnAlterarGasto.setDisable(logica);
+        btnExcluirGasto.setDisable(logica);
     }
 
     public void limparCampos() {
