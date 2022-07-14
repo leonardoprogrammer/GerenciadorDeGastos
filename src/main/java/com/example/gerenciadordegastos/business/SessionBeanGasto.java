@@ -3,6 +3,7 @@ package com.example.gerenciadordegastos.business;
 import com.example.gerenciadordegastos.dao.GastoDAO;
 import com.example.gerenciadordegastos.model.entity.Gasto;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -30,6 +31,10 @@ public class SessionBeanGasto {
 
     public List<Gasto> recuperarGastosPorUsuario(long idUsuario) {
         return gastoDAO.recuperarGastosPorUsuario(idUsuario);
+    }
+
+    public List<Gasto> recuperarGastosPorPeriodo(Date dataInicial, Date dataFinal, long idUsuario) {
+        return gastoDAO.recuperarGastosPorPeriodo(dataInicial, dataFinal, idUsuario);
     }
 
     public Gasto recuperarGastoPorId(long id) {

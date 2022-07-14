@@ -4,6 +4,7 @@ import com.example.gerenciadordegastos.ConnectionFactory;
 import com.example.gerenciadordegastos.model.entity.Renda;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -258,6 +259,58 @@ public class RendaDAO {
             pstm = conn.prepareStatement(query);
 
             pstm.setInt(1, (int) idUsuario);
+
+            rs = pstm.executeQuery();
+
+            while (rs.next()) {
+                Renda renda = new Renda();
+
+                renda.setId(rs.getInt("id"));
+                renda.setIdUsuario(rs.getInt("id_usuario"));
+                renda.setTitulo(rs.getString("titulo"));
+                renda.setValor(rs.getDouble("valor"));
+                renda.setData(rs.getDate("data"));
+                renda.setDescricao(rs.getString("descricao"));
+                renda.setDtaAdd(rs.getTimestamp("dta_add"));
+                renda.setDtaAlt(rs.getTimestamp("dta_alt"));
+
+                rendas.add(renda);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (pstm != null) {
+                    pstm.close();
+                }
+                if (conn != null) {
+                    conn.close();
+                }
+                if (rs != null) {
+                    rs.close();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return rendas;
+    }
+
+    public List<Renda> recuperarRendasPorPeriodo(Date dataInicial, Date dataFinal, long idUsuario) {
+        String query = "SELECT * FROM RENDA WHERE id_usuario = ? AND data BETWEEN ? AND ?";
+        List<Renda> rendas = new ArrayList<>();
+
+        Connection conn = null;
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+
+        try {
+            conn = ConnectionFactory.createConnectionToMySql();
+            pstm = conn.prepareStatement(query);
+
+            pstm.setInt(1, (int) idUsuario);
+            pstm.setDate(2, dataInicial);
+            pstm.setDate(3, dataFinal);
 
             rs = pstm.executeQuery();
 

@@ -4,6 +4,7 @@ import com.example.gerenciadordegastos.ConnectionFactory;
 import com.example.gerenciadordegastos.model.entity.Gasto;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -254,5 +255,57 @@ public class GastoDAO {
             }
         }
         return gastos;
+    }
+
+    public List<Gasto> recuperarGastosPorPeriodo(Date dataInicial, Date dataFinal, long idUsuario) {
+        String query = "SELECT * FROM GASTO WHERE id_usuario = ? AND data BETWEEN ? AND ?";
+        List<Gasto> gastos = new ArrayList<>();
+
+        Connection conn = null;
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+
+        try {
+            conn = ConnectionFactory.createConnectionToMySql();
+            pstm = conn.prepareStatement(query);
+
+            pstm.setInt(1, (int) idUsuario);
+            pstm.setDate(2, dataInicial);
+            pstm.setDate(3, dataFinal);
+
+            rs = pstm.executeQuery();
+
+            while (rs.next()) {
+                Gasto gasto = new Gasto();
+
+                gasto.setId(rs.getInt("id"));
+                gasto.setIdUsuario(rs.getInt("id_usuario"));
+                gasto.setTitulo(rs.getString("titulo"));
+                gasto.setValor(rs.getDouble("valor"));
+                gasto.setData(rs.getDate("data"));
+                gasto.setDescricao(rs.getString("descricao"));
+                gasto.setDtaAdd(rs.getTimestamp("dta_add"));
+                gasto.setDtaAlt(rs.getTimestamp("dta_alt"));
+
+                gastos.add(gasto);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (pstm != null) {
+                    pstm.close();
+                }
+                if (conn != null) {
+                    conn.close();
+                }
+                if (rs != null) {
+                    rs.close();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return gastos;
+        }
     }
 }

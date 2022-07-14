@@ -153,7 +153,7 @@ public class PerfilController implements Initializable {
     public boolean validationsSenha() {
         StringBuilder invalid = new StringBuilder("");
         if (Utils.isNullOrEmpty(txtSenhaAtual.getText())) {
-            invalid.append("\nPreencha o campo Senha Atual");
+            invalid.append("\nPreencha o campo Senha atual");
         } else if (!usuario.getPassword().equals(txtSenhaAtual.getText())) {
             invalid.append("\nSenha atual está incorreta");
         }

@@ -3,6 +3,7 @@ package com.example.gerenciadordegastos.business;
 import com.example.gerenciadordegastos.dao.RendaDAO;
 import com.example.gerenciadordegastos.model.entity.Renda;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -28,12 +29,16 @@ public class SessionBeanRenda {
         rendaDAO.deletarRenda(id);
     }
 
-    public List<Renda> recuperarRendas() {
+    public List<Renda> recuperarTodasRendas() {
         return rendaDAO.recuperarTodasRendas();
     }
 
     public List<Renda> recuperarRendasPorUsuario(long idUsuario) {
         return rendaDAO.recuperarRendasPorUsuario(idUsuario);
+    }
+
+    public List<Renda> recuperarRendasPorPeriodo(Date dataInical, Date dataFinal, long idUsuario) {
+        return rendaDAO.recuperarRendasPorPeriodo(dataInical, dataFinal, idUsuario);
     }
 
     public Renda recuperarRendaPorId(long id) {

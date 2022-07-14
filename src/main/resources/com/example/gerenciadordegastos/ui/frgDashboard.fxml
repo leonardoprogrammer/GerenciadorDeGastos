@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
+<?import javafx.scene.chart.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
@@ -14,5 +16,38 @@
                </font>
             </Label>
          </center></BorderPane>
+      <Label fx:id="lblValores" layoutX="40.0" layoutY="37.0" text="Valores">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <ChoiceBox fx:id="choiceValores" layoutX="33.0" layoutY="56.0" prefHeight="25.0" prefWidth="242.0" style="-fx-background-color: #282a35; -fx-text-fill: #ffffff;" />
+      <DatePicker fx:id="dtDataInicial" layoutX="309.0" layoutY="56.0" prefHeight="25.0" prefWidth="150.0" promptText="Data inicial" />
+      <Label fx:id="lblEntre" layoutX="469.0" layoutY="60.0" text="entre" />
+      <DatePicker fx:id="dtDataFinal" layoutX="507.0" layoutY="56.0" prefHeight="25.0" prefWidth="150.0" promptText="Data final" />
+      <Button fx:id="btnCalcular" alignment="CENTER" contentDisplay="CENTER" layoutX="683.0" layoutY="56.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: #282a35;" text="Calcular" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <PieChart fx:id="chartPie" layoutX="33.0" layoutY="124.0" prefHeight="230.0" prefWidth="230.0" />
+      <LineChart fx:id="chartLine" layoutX="275.0" layoutY="139.0" prefHeight="200.0" prefWidth="250.0">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </LineChart>
+      <BarChart fx:id="chartBar" layoutX="549.0" layoutY="139.0" prefHeight="200.0" prefWidth="250.0">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </BarChart>
    </children>
 </AnchorPane>

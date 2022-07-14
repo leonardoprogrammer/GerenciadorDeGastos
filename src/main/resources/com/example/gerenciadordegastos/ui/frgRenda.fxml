@@ -37,14 +37,14 @@
             <Font name="System Bold" size="12.0" />
          </font></Label>
       <TextArea fx:id="txtDescricao" layoutX="394.0" layoutY="56.0" prefHeight="76.0" prefWidth="265.0" promptText="Adicione uma descrição, se necessário..." />
-      <Button fx:id="btnLimparCampos" alignment="CENTER" layoutX="675.0" layoutY="56.0" mnemonicParsing="false" style="-fx-background-color: #282a35;" text="Limpar campos" textAlignment="CENTER" textFill="WHITE">
+      <Button fx:id="btnLimparCampos" alignment="CENTER" contentDisplay="CENTER" layoutX="675.0" layoutY="56.0" mnemonicParsing="false" style="-fx-background-color: #282a35;" text="Limpar campos" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <Button fx:id="btnAdicionar" alignment="CENTER" layoutX="675.0" layoutY="100.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: #282a35;" text="Adicionar" textAlignment="CENTER" textFill="WHITE">
+      <Button fx:id="btnAdicionar" alignment="CENTER" contentDisplay="CENTER" layoutX="675.0" layoutY="100.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: #282a35;" text="Adicionar" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -62,14 +62,14 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Button fx:id="btnAlterarRenda" alignment="CENTER" layoutX="546.0" layoutY="384.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="113.0" style="-fx-background-color: #282a35;" text="Alterar renda" textAlignment="CENTER" textFill="WHITE">
+      <Button fx:id="btnAlterarRenda" alignment="CENTER" contentDisplay="CENTER" layoutX="546.0" layoutY="384.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="113.0" style="-fx-background-color: #282a35;" text="Alterar renda" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <Button fx:id="btnExcluirRenda" alignment="CENTER" layoutX="675.0" layoutY="384.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="113.0" style="-fx-background-color: #282a35;" text="Excluir renda" textAlignment="CENTER" textFill="WHITE">
+      <Button fx:id="btnExcluirRenda" alignment="CENTER" contentDisplay="CENTER" layoutX="675.0" layoutY="384.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="113.0" style="-fx-background-color: #282a35;" text="Excluir renda" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
