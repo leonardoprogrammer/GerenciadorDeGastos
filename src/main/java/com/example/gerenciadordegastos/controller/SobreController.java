@@ -31,10 +31,18 @@ public class SobreController implements Initializable {
     @FXML
     private Label lblLocation;
 
+    @FXML
+    private Label lblTextDescricao;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         lblNomeAplicacao.setText(Constantes.NAME_APPLICATION);
         lblVersaoAplicacao.setText("Versão: " + Constantes.VERSION_APPLICATION);
+
+        lblTextDescricao.setText("Desenvolvedor Java\n" +
+                "Formado em Análise e Desenvolvimento de Sistemas\n" +
+                "Criei este software para fins de prática e estudo\n" +
+                "Sinta-se a vontade para usá-lo da forma que melhor lhe agradar");
 
         lblGithub.setOnMouseClicked(event -> {
             abrirLink(linkGithub);

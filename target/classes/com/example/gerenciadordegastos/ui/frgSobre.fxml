@@ -19,35 +19,21 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Label layoutX="67.0" layoutY="248.0" text="Leonardo Cesar da Silva">
+      <Label layoutX="67.0" layoutY="242.0" text="Leonardo Cesar da Silva">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="67.0" layoutY="289.0" text="Descrição">
+      <Label layoutX="67.0" layoutY="280.0" text="Descrição">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Label alignment="TOP_LEFT" layoutX="67.0" layoutY="318.0" prefHeight="88.0" prefWidth="329.0" text="Programador back-end Java. Gosta de desenvolver aplicações desktop com JavaFX e microserviços com Spring Boot." wrapText="true" />
-      <BorderPane layoutX="463.0" layoutY="205.0" prefHeight="168.0" prefWidth="294.0" style="-fx-background-color: #282a35; -fx-background-radius: 10;">
+      <Label fx:id="lblTextDescricao" alignment="TOP_LEFT" layoutX="67.0" layoutY="303.0" prefHeight="88.0" prefWidth="372.0" text="Desenvolvedor Java Formado em Análise e Desenvolvimento de SistemasCriei este software para fins de prática e estudoSinta-se a vontade para usá-lo da forma que melhor lhe agradar" wrapText="true" />
+      <BorderPane layoutX="463.0" layoutY="208.0" prefHeight="168.0" prefWidth="294.0" style="-fx-background-color: #282a35; -fx-background-radius: 10;">
          <center>
-            <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="121.0" BorderPane.alignment="CENTER">
+            <VBox alignment="CENTER_LEFT" prefHeight="115.0" prefWidth="264.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label fx:id="lblGithub" text="leonardoprogrammer" textFill="WHITE">
-                     <graphic>
-                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../icons/github_96px.png" />
-                           </image></ImageView>
-                     </graphic>
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Label>
                   <Label fx:id="lblLinkedin" text="Leonardo Silva" textFill="WHITE">
                      <graphic>
                         <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
@@ -57,22 +43,38 @@
                         </ImageView>
                      </graphic>
                      <font>
-                        <Font name="System Bold" size="12.0" />
+                        <Font name="System Bold" size="14.0" />
                      </font>
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Label>
+                  <Pane prefHeight="5.0" prefWidth="200.0" />
+                  <Label fx:id="lblGithub" text="leonardoprogrammer" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/github_96px.png" />
+                           </image></ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Label>
+                  <Pane prefHeight="5.0" prefWidth="200.0" />
                   <Label text="São Paulo, Brasil" textFill="WHITE">
                      <graphic>
                         <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../icons/location_24px.png" />
+                              <Image url="@../icons/location_48px.png" />
                            </image>
                         </ImageView>
                      </graphic>
                      <font>
-                        <Font name="System Bold" size="12.0" />
+                        <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
                </children>
@@ -83,6 +85,16 @@
          </left>
          <right>
             <Pane prefHeight="50.0" prefWidth="15.0" BorderPane.alignment="CENTER" />
-         </right></BorderPane>
+         </right>
+         <top>
+            <Label text="Mais sobre mim :)" textAlignment="CENTER" textFill="#dddddd" BorderPane.alignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <graphic>
+                  <Pane prefHeight="30.0" prefWidth="5.0" />
+               </graphic>
+            </Label>
+         </top></BorderPane>
    </children>
 </AnchorPane>
