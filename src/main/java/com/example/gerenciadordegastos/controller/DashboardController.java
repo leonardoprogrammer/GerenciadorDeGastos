@@ -256,17 +256,17 @@ public class DashboardController implements Initializable {
     public boolean validationsData() {
         StringBuilder invalid = new StringBuilder("");
         if (choiceValores.getValue() == null) {
-            invalid.append("Selecione um valor para os gráficos.");
+            invalid.append("\nSelecione um valor para os gráficos.");
         }
         if (dtDataInicial.getValue() == null) {
-            invalid.append("Insira a data inicial.");
+            invalid.append("\nInsira a data inicial.");
         }
         if (dtDataFinal.getValue() == null) {
-            invalid.append("Insira a data final.");
+            invalid.append("\nInsira a data final.");
         }
         if (dtDataInicial.getValue() != null && dtDataFinal.getValue() != null) {
             if (dtDataInicial.getValue().isAfter(dtDataFinal.getValue())) {
-                invalid.append("O período inserido é inválido!\nA data inicial deve ser antes da data final.");
+                invalid.append("\nO período inserido é inválido!\nA data inicial deve ser antes da data final.");
             }
         }
 
