@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="435.0" prefWidth="824.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label fx:id="lblNomeAplicacao" layoutX="65.0" layoutY="60.0" text="Gerenciador Financeiro">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblVersaoAplicacao" layoutX="67.0" layoutY="96.0" text="Versão: 1.0.1" />
+      <Label layoutX="67.0" layoutY="218.0" text="Desenvolvido por">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="67.0" layoutY="248.0" text="Leonardo Cesar da Silva">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="67.0" layoutY="289.0" text="Descrição">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label alignment="TOP_LEFT" layoutX="67.0" layoutY="318.0" prefHeight="88.0" prefWidth="329.0" text="Programador back-end Java. Gosta de desenvolver aplicações desktop com JavaFX e microserviços com Spring Boot." wrapText="true" />
+      <BorderPane layoutX="463.0" layoutY="205.0" prefHeight="168.0" prefWidth="294.0" style="-fx-background-color: #282a35; -fx-background-radius: 10;">
+         <center>
+            <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="121.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label fx:id="lblGithub" text="leonardoprogrammer" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/github_96px.png" />
+                           </image></ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Label>
+                  <Label fx:id="lblLinkedin" text="Leonardo Silva" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/linkedin_96px.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Label>
+                  <Label text="São Paulo, Brasil" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/location_24px.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+         </center>
+         <left>
+            <Pane prefHeight="50.0" prefWidth="15.0" BorderPane.alignment="CENTER" />
+         </left>
+         <right>
+            <Pane prefHeight="50.0" prefWidth="15.0" BorderPane.alignment="CENTER" />
+         </right></BorderPane>
+   </children>
+</AnchorPane>

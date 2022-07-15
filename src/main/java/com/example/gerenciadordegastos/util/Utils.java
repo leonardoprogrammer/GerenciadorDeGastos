@@ -2,6 +2,8 @@ package com.example.gerenciadordegastos.util;
 
 import java.io.File;
 import java.text.Collator;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.*;
 
 public class Utils {
@@ -176,6 +178,18 @@ public class Utils {
         } else {
             return false;
         }
+    }
+
+    public static Calendar converterLocalDateParaCalendar(LocalDate localDate) {
+        if (localDate == null) {
+            return null;
+        }
+
+        Date data = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(data);
+
+        return calendar;
     }
 
     public static Date recuperarProximoDiaSemana(Date dia) {

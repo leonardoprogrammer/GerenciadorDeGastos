@@ -42,16 +42,8 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <PieChart fx:id="chartPie" layoutX="4.0" layoutY="100.0" prefHeight="314.0" prefWidth="284.0" />
-      <LineChart fx:id="chartLine" layoutX="275.0" layoutY="100.0" prefHeight="314.0" prefWidth="250.0">
-        <xAxis>
-          <CategoryAxis side="BOTTOM" />
-        </xAxis>
-        <yAxis>
-          <NumberAxis side="LEFT" />
-        </yAxis>
-      </LineChart>
-      <BarChart fx:id="chartBar" layoutX="549.0" layoutY="100.0" prefHeight="314.0" prefWidth="250.0">
+      <PieChart fx:id="chartPie" layoutX="4.0" layoutY="100.0" prefHeight="314.0" prefWidth="333.0" />
+      <BarChart fx:id="chartBar" layoutX="365.0" layoutY="100.0" prefHeight="314.0" prefWidth="418.0">
         <xAxis>
           <CategoryAxis side="BOTTOM" />
         </xAxis>

@@ -75,6 +75,9 @@ public class PainelController implements Initializable {
     private Button btnPreferencias;
 
     @FXML
+    private Button btnSobre;
+
+    @FXML
     private Button btnSair;
 
     @FXML
@@ -166,6 +169,10 @@ public class PainelController implements Initializable {
 
         btnPreferencias.setOnMouseClicked(event -> {
             carregarFragment("ui/frgPreferencias.fxml", new PreferenciasController(usuario));
+        });
+
+        btnSobre.setOnMouseClicked(event -> {
+            carregarFragment("ui/frgSobre.fxml", new SobreController());
         });
 
         btnSair.setOnMouseClicked(event -> {

@@ -3,6 +3,7 @@ package com.example.gerenciadordegastos.controller;
 import com.example.gerenciadordegastos.business.SessionBeanGasto;
 import com.example.gerenciadordegastos.business.SessionBeanPreferencias;
 import com.example.gerenciadordegastos.business.SessionBeanRenda;
+import com.example.gerenciadordegastos.enums.Meses;
 import com.example.gerenciadordegastos.enums.ValoresGraficos;
 import com.example.gerenciadordegastos.model.entity.Gasto;
 import com.example.gerenciadordegastos.model.entity.Renda;
@@ -13,8 +14,8 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
-import javafx.scene.chart.LineChart;
 import javafx.scene.chart.PieChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DateCell;
@@ -62,9 +63,6 @@ public class DashboardController implements Initializable {
     private PieChart chartPie;
 
     @FXML
-    private LineChart chartLine;
-
-    @FXML
     private BarChart chartBar;
 
     @Override
@@ -73,9 +71,7 @@ public class DashboardController implements Initializable {
 
         definirDataMaxima();
 
-        chartPie.setTitle("Gráfico de Pizza");
-        chartLine.setTitle("Gráfico de Linha");
-        chartBar.setTitle("Gráfico de Torre");
+        habilitarGraficos(false);
 
         btnCalcular.setOnMouseClicked(event -> {
             if (validationsData())
@@ -89,6 +85,7 @@ public class DashboardController implements Initializable {
 
     public void calcular() {
         chartPie.setTitle("% de " + choiceValores.getValue().getDescricao());
+        chartBar.setTitle(choiceValores.getValue().getDescricao() + " em R$");
 
         if (choiceValores.getValue().equals(ValoresGraficos.GASTOS) || choiceValores.getValue().equals(ValoresGraficos.GASTOS_E_RENDAS)) {
             gastos = sessionBeanGasto.recuperarGastosPorPeriodo(Date.valueOf(dtDataInicial.getValue()), Date.valueOf(dtDataFinal.getValue()), usuario.getId());
@@ -97,26 +94,47 @@ public class DashboardController implements Initializable {
             rendas = sessionBeanRenda.recuperarRendasPorPeriodo(Date.valueOf(dtDataInicial.getValue()), Date.valueOf(dtDataFinal.getValue()), usuario.getId());
         }
 
+        chartPie.setData(FXCollections.observableArrayList());
+        chartBar.setData(FXCollections.observableArrayList());
+
         if (choiceValores.getValue().equals(ValoresGraficos.GASTOS)) {
             if (!gastos.isEmpty()) {
                 List<PieChart.Data> gastosPorcentagens = calcularPorcentagensGastos();
                 chartPie.setData(FXCollections.observableArrayList(gastosPorcentagens));
+
+                XYChart.Series gastosEmReais = organizarGastosEmReais();
+                gastosEmReais.setName(definirNameChartBar());
+                chartBar.getData().addAll(gastosEmReais);
+                habilitarGraficos(true);
             } else {
                 GFAlert.makeAlertInfo("Não há gastos neste período.");
+                habilitarGraficos(false);
             }
         } else if (choiceValores.getValue().equals(ValoresGraficos.RENDAS)) {
-            if (!gastos.isEmpty()) {
+            if (!rendas.isEmpty()) {
                 List<PieChart.Data> rendasPorcentagens = calcularPorcentagensRendas();
                 chartPie.setData(FXCollections.observableArrayList(rendasPorcentagens));
+
+                XYChart.Series rendasEmReais = organizarRendasEmReais();
+                rendasEmReais.setName(definirNameChartBar());
+                chartBar.getData().addAll(rendasEmReais);
+                habilitarGraficos(true);
             } else {
                 GFAlert.makeAlertInfo("Não há rendas neste período.");
+                habilitarGraficos(false);
             }
         } else if (choiceValores.getValue().equals(ValoresGraficos.GASTOS_E_RENDAS)) {
             if (!gastos.isEmpty() || !rendas.isEmpty()) {
                 List<PieChart.Data> porcentagens = calcularPorcentagensRendasEGastos();
                 chartPie.setData(FXCollections.observableArrayList(porcentagens));
+
+                XYChart.Series gastosERendasEmReais = organizarGastosERendasEmReais();
+                gastosERendasEmReais.setName(definirNameChartBar());
+                chartBar.getData().addAll(gastosERendasEmReais);
+                habilitarGraficos(true);
             } else {
                 GFAlert.makeAlertInfo("Não há gastos e rendas neste período.");
+                habilitarGraficos(false);
             }
         }
     }
@@ -158,7 +176,6 @@ public class DashboardController implements Initializable {
     public List<PieChart.Data> calcularPorcentagensRendasEGastos() {
         double totalGastos = 0;
         double totalRendas = 0;
-        double sobra = 0;
         double total = 0;
         List<PieChart.Data> porcentagens = new ArrayList<>();
 
@@ -170,13 +187,7 @@ public class DashboardController implements Initializable {
             totalRendas += renda.getValor();
         }
 
-        sobra = totalRendas - totalGastos;
-
-        if (sobra > 0) {
-            total = totalGastos + totalRendas + sobra;
-        } else {
-            total = totalGastos + totalRendas;
-        }
+        total = totalGastos + totalRendas;
 
         double porcentagemGastos = totalGastos / total;
         porcentagemGastos *= 100;
@@ -186,13 +197,60 @@ public class DashboardController implements Initializable {
         porcentagemRendas *= 100;
         porcentagens.add(new PieChart.Data("Rendas", porcentagemRendas));
 
-        if (sobra > 0) {
-            double porcentagemSobra = sobra / total;
-            porcentagemSobra *= 100;
-            porcentagens.add(new PieChart.Data("Sobra", porcentagemSobra));
+        return porcentagens;
+    }
+
+    public XYChart.Series organizarGastosEmReais() {
+        XYChart.Series gastosSeries = new XYChart.Series();
+
+        for (Gasto gasto : gastos) {
+            gastosSeries.getData().add(new XYChart.Data(gasto.getTitulo(), gasto.getValor()));
         }
 
-        return porcentagens;
+        return gastosSeries;
+    }
+
+    public XYChart.Series organizarRendasEmReais() {
+        XYChart.Series rendasSeries = new XYChart.Series();
+
+        for (Renda renda : rendas) {
+            rendasSeries.getData().add(new XYChart.Data(renda.getTitulo(), renda.getValor()));
+        }
+
+        return rendasSeries;
+    }
+
+    public XYChart.Series organizarGastosERendasEmReais() {
+        XYChart.Series gastosERendasSeries = new XYChart.Series();
+        double totalGastos = 0;
+        double totalRendas = 0;
+
+        for (Gasto gasto : gastos) {
+            totalGastos += gasto.getValor();
+        }
+
+        for (Renda renda : rendas) {
+            totalRendas += renda.getValor();
+        }
+
+        gastosERendasSeries.getData().add(new XYChart.Data("Gastos", totalGastos));
+        gastosERendasSeries.getData().add(new XYChart.Data("Rendas", totalRendas));
+
+        return gastosERendasSeries;
+    }
+
+    public String definirNameChartBar() {
+        Calendar inicioPeriodo = Utils.converterLocalDateParaCalendar(dtDataInicial.getValue());
+        Calendar fimPeriodo = Utils.converterLocalDateParaCalendar(dtDataFinal.getValue());
+        String name;
+
+        if ((inicioPeriodo.get(Calendar.MONTH) == fimPeriodo.get(Calendar.MONTH)) && (inicioPeriodo.get(Calendar.YEAR) == fimPeriodo.get(Calendar.YEAR))) {
+            name = Meses.get(inicioPeriodo.get(Calendar.MONTH) + 1).getNome() + "/" + inicioPeriodo.get(Calendar.YEAR);
+        } else {
+            name = Meses.get(inicioPeriodo.get(Calendar.MONTH) + 1).getAbreviacao() + "/" + inicioPeriodo.get(Calendar.YEAR) + " - " + Meses.get(fimPeriodo.get(Calendar.MONTH) + 1).getAbreviacao() + "/" + fimPeriodo.get(Calendar.YEAR);
+        }
+
+        return name;
     }
 
     public boolean validationsData() {
@@ -246,5 +304,10 @@ public class DashboardController implements Initializable {
         LocalDate firstDayMonth = LocalDate.of(today.get(Calendar.YEAR), today.get(Calendar.MONTH) + 1, 1);
         dtDataInicial.setValue(firstDayMonth);
         dtDataFinal.setValue(maxDate);
+    }
+
+    public void habilitarGraficos(boolean logica) {
+        chartPie.setVisible(logica);
+        chartBar.setVisible(logica);
     }
 }
