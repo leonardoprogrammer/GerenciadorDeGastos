@@ -140,7 +140,7 @@ public class PainelController implements Initializable {
         });
 
         btnTimeline.setOnMouseClicked(event -> {
-            carregarFragment("ui/frgTimeline.fxml", new TimelineController(usuario));
+            carregarFragment("ui/frgTimeline.fxml", new TimelineController(usuario, null));
         });
 
         btnGastos.setOnMouseClicked(event -> {
@@ -160,7 +160,7 @@ public class PainelController implements Initializable {
         });
 
         btnInicio.setOnMouseClicked(event -> {
-            carregarFragment("ui/frgTimeline.fxml", new TimelineController(usuario));
+            carregarFragment("ui/frgTimeline.fxml", new TimelineController(usuario, null));
         });
 
         btnPerfil.setOnMouseClicked(event -> {

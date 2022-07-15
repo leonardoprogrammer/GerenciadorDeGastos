@@ -2,16 +2,10 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #32A8A6;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
 
-    <children>
-        <Label layoutX="173.0" layoutY="174.0" text="PREFERÊNCIAS" textFill="#fffdfd">
-            <font>
-                <Font name="System Bold" size="36.0" />
-            </font>
-        </Label>
-    </children>
-
+<AnchorPane prefHeight="435.0" prefWidth="824.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <CheckBox layoutX="52.0" layoutY="98.0" mnemonicParsing="false" text="Exibir lista com cores na Timeline" />
+   </children>
 </AnchorPane>
