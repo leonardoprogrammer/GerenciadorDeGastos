@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
@@ -14,6 +15,47 @@
                </font>
             </Label>
          </center></BorderPane>
+      <Label fx:id="lblTipoPesquisa" layoutX="40.0" layoutY="37.0" text="Tipo da Pesquisa">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <ChoiceBox fx:id="choicePesquisa" layoutX="33.0" layoutY="56.0" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #282a35;" />
+      <ChoiceBox fx:id="choiceReferencia" layoutX="207.0" layoutY="56.0" prefWidth="150.0" style="-fx-background-color: #282a35;" />
+      <DatePicker fx:id="dtInicioPeriodo" layoutX="372.0" layoutY="56.0" prefHeight="25.0" prefWidth="115.0" />
+      <DatePicker fx:id="dtFimPeriodo" layoutX="498.0" layoutY="56.0" prefWidth="115.0" />
+      <Button fx:id="btnPesquisar" alignment="CENTER" contentDisplay="CENTER" layoutX="632.0" layoutY="56.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="115.0" style="-fx-background-color: #282a35;" text="Pesquisar" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <ListView fx:id="listTimeline" layoutX="40.0" layoutY="92.0" prefHeight="274.0" prefWidth="498.0" />
+      <Label fx:id="lblTotalGastos" layoutX="50.0" layoutY="368.0" text="Total de Gastos" textFill="#4a4a4a">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <TextField fx:id="txtTotalGastos" alignment="CENTER_RIGHT" editable="false" layoutX="40.0" layoutY="386.0" prefHeight="27.0" prefWidth="150.0" style="-fx-background-color: #ffb3b3; -fx-border-color: #282a35; -fx-background-radius: 2; -fx-border-radius: 2;" text="R$ 1.200">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></TextField>
+      <Label fx:id="lblTotalRendas" layoutX="209.0" layoutY="368.0" text="Total de Rendas" textFill="#4a4a4a">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <TextField fx:id="txtTotalRendas" alignment="CENTER_RIGHT" editable="false" layoutX="199.0" layoutY="386.0" prefHeight="27.0" prefWidth="150.0" style="-fx-background-color: #7beab4; -fx-border-color: #282a35; -fx-background-radius: 2; -fx-border-radius: 2;" text="R$ 5.000,00">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></TextField>
+      <Label fx:id="lblRemanescente" layoutX="368.0" layoutY="368.0" text="Remanescente" textFill="#4a4a4a">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <TextField fx:id="txtRemanescente" alignment="CENTER_RIGHT" editable="false" layoutX="358.0" layoutY="386.0" prefHeight="27.0" prefWidth="150.0" style="-fx-background-color: #ccebff; -fx-border-color: #282a35; -fx-background-radius: 2; -fx-border-radius: 2;" text="R$ 550,73">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></TextField>
+      <VBox layoutX="620.0" layoutY="149.0" prefHeight="200.0" prefWidth="100.0" />
    </children>
 
 </AnchorPane>

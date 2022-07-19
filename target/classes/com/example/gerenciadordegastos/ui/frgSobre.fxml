@@ -29,7 +29,7 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="lblTextDescricao" alignment="TOP_LEFT" layoutX="67.0" layoutY="303.0" prefHeight="88.0" prefWidth="372.0" text="Desenvolvedor Java Formado em Análise e Desenvolvimento de SistemasCriei este software para fins de prática e estudoSinta-se a vontade para usá-lo da forma que melhor lhe agradar" wrapText="true" />
+      <Label fx:id="lblTextDescricao" alignment="TOP_LEFT" layoutX="67.0" layoutY="303.0" prefHeight="88.0" prefWidth="372.0" text="Texto de Descrição" wrapText="true" />
       <BorderPane layoutX="463.0" layoutY="208.0" prefHeight="168.0" prefWidth="294.0" style="-fx-background-color: #282a35; -fx-background-radius: 10;">
          <center>
             <VBox alignment="CENTER_LEFT" prefHeight="115.0" prefWidth="264.0" BorderPane.alignment="CENTER">

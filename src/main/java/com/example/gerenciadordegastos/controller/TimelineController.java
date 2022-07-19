@@ -3,24 +3,29 @@ package com.example.gerenciadordegastos.controller;
 import com.example.gerenciadordegastos.business.SessionBeanGasto;
 import com.example.gerenciadordegastos.business.SessionBeanRenda;
 import com.example.gerenciadordegastos.enums.Meses;
+import com.example.gerenciadordegastos.enums.TipoMovimento;
 import com.example.gerenciadordegastos.enums.TipoPesquisa;
 import com.example.gerenciadordegastos.model.entity.Gasto;
 import com.example.gerenciadordegastos.model.entity.Preferencias;
 import com.example.gerenciadordegastos.model.entity.Renda;
 import com.example.gerenciadordegastos.model.entity.Usuario;
+import com.example.gerenciadordegastos.util.Formatacao;
 import com.example.gerenciadordegastos.util.GFAlert;
 import com.example.gerenciadordegastos.util.Utils;
+import com.example.gerenciadordegastos.vo.MovimentoFinanceiroVO;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 import java.net.URL;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class TimelineController implements Initializable {
 
@@ -32,6 +37,7 @@ public class TimelineController implements Initializable {
     private List<Renda> rendas = new ArrayList<>();
     private LocalDate dataInicioAux;
     private LocalDate dataFinalAux;
+    private List<MovimentoFinanceiroVO> movimentos = new ArrayList<>();
 
     @FXML
     private ChoiceBox<TipoPesquisa> choicePesquisa = new ChoiceBox<>();
@@ -49,7 +55,7 @@ public class TimelineController implements Initializable {
     private Button btnPesquisar;
 
     @FXML
-    private ListView listTimeline;
+    private ListView<HBox> listTimeline;
 
     @FXML
     private TextField txtTotalGastos;
@@ -62,12 +68,15 @@ public class TimelineController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        choicePesquisa.setItems(FXCollections.observableArrayList(TipoPesquisa.values()));
+        choiceReferencia.setItems(FXCollections.observableArrayList(Meses.values()));
+
         // faz validações das preferências (cores...)
         definirDataMaxima();
 
-        choiceReferencia.setVisible(false);
+        /*choiceReferencia.setVisible(false);
         dtInicioPeriodo.setVisible(false);
-        dtFimPeriodo.setVisible(false);
+        dtFimPeriodo.setVisible(false);*/
 
         btnPesquisar.setOnMouseClicked(event -> {
             if (validacoesCampos())
@@ -104,7 +113,12 @@ public class TimelineController implements Initializable {
             double totalRendas = calcularTotalRendas();
             double remanescente = totalRendas - totalGastos;
 
-            //monta lista
+            txtTotalGastos.setText("R$ " + Formatacao.converterDoubleParaReal(totalGastos));
+            txtTotalRendas.setText("R$ " + Formatacao.converterDoubleParaReal(totalRendas));
+            txtRemanescente.setText("R$ " + Formatacao.converterDoubleParaReal(remanescente));
+
+            organizarMovimentos();
+            montarListar();
         } else {
             if (TipoPesquisa.REFERENCIA.equals(choicePesquisa.getValue()))
                 GFAlert.makeAlertWarning("Não há gastos e rendas nesta referência.");
@@ -115,27 +129,75 @@ public class TimelineController implements Initializable {
         }
     }
 
-    public double calcularTotalGastos() {
-        if (gastos.isEmpty())
-            return 0;
+    public void montarListar() {
+        listTimeline = new ListView<>();
 
+        ArrayList<HBox> items = new ArrayList<>();
+
+        for (MovimentoFinanceiroVO movimento : movimentos) {
+            HBox hbox = new HBox(8);
+
+            VBox vbLeft = new VBox(8);
+            vbLeft.setAlignment(Pos.CENTER_LEFT);
+            vbLeft.getChildren().addAll(new Label(movimento.getTipo().getDescricao()), new Label(movimento.getTitulo()));
+
+            VBox vbRight = new VBox(8);
+            vbRight.setAlignment(Pos.CENTER_RIGHT);
+            SimpleDateFormat dataFormat = new SimpleDateFormat("dd-MM-yyyy");
+            vbRight.getChildren().addAll(new Label(movimento.getTipo().getSimbolo() + " " + movimento.getValor()), new Label(dataFormat.format(movimento.getData())));
+
+            hbox.getChildren().addAll(vbLeft, vbRight);
+
+            items.add(hbox);
+        }
+
+        listTimeline.setItems(FXCollections.observableArrayList(items));
+    }
+
+    public void organizarMovimentos() {
+        movimentos = new ArrayList<>();
+
+        if (!rendas.isEmpty()) {
+            for (Renda renda : rendas) {
+                movimentos.add(new MovimentoFinanceiroVO(TipoMovimento.RENDA, renda.getTitulo(), renda.getValor(), renda.getData(), renda.getDescricao(), renda.getDtaAdd()));
+            }
+        }
+
+        if (!gastos.isEmpty()) {
+            for (Gasto gasto : gastos) {
+                movimentos.add(new MovimentoFinanceiroVO(TipoMovimento.GASTO, gasto.getTitulo(), gasto.getValor(), gasto.getData(), gasto.getDescricao(), gasto.getDtaAdd()));
+            }
+        }
+
+        Collections.sort(movimentos, new Comparator<MovimentoFinanceiroVO>() {
+            @Override
+            public int compare(MovimentoFinanceiroVO mv1, MovimentoFinanceiroVO mv2) {
+                if (mv1.getData() == null || mv2.getData() == null)
+                    return 0;
+                return mv1.getData().compareTo(mv2.getData());
+            }
+        });
+    }
+
+    public double calcularTotalGastos() {
         double total = 0;
 
-        for (Gasto gasto : gastos) {
-            total += gasto.getValor();
+        if (!gastos.isEmpty()) {
+            for (Gasto gasto : gastos) {
+                total += gasto.getValor();
+            }
         }
 
         return total;
     }
 
     public double calcularTotalRendas() {
-        if (rendas.isEmpty())
-            return 0;
-
         double total = 0;
 
-        for (Renda renda : rendas) {
-            total += renda.getValor();
+        if (!rendas.isEmpty()) {
+            for (Renda renda : rendas) {
+                total += renda.getValor();
+            }
         }
 
         return total;

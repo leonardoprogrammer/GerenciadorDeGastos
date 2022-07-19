@@ -94,7 +94,7 @@ public class PainelController implements Initializable {
 
         lblTitulo.setText("Olá, " + usuario.getNome());
 
-        carregarFragment("ui/frgTimeline.fxml", null);
+        carregarFragment("ui/frgTimeline.fxml", new TimelineController(usuario, null));
 
         alterarTema(ThemeMode.LIGHT_MODE);
 
