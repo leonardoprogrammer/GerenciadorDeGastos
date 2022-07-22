@@ -13,13 +13,18 @@ import com.example.gerenciadordegastos.util.Formatacao;
 import com.example.gerenciadordegastos.util.GFAlert;
 import com.example.gerenciadordegastos.util.Utils;
 import com.example.gerenciadordegastos.vo.MovimentoFinanceiroVO;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Paint;
+import javafx.scene.text.Font;
 
 import java.net.URL;
 import java.sql.Date;
@@ -41,6 +46,9 @@ public class TimelineController implements Initializable {
 
     @FXML
     private ChoiceBox<TipoPesquisa> choicePesquisa = new ChoiceBox<>();
+
+    @FXML
+    private Label lblReferencia;
 
     @FXML
     private ChoiceBox<Meses> choiceReferencia = new ChoiceBox<>();
@@ -66,21 +74,61 @@ public class TimelineController implements Initializable {
     @FXML
     private TextField txtRemanescente;
 
+    @FXML
+    private TitledPane tpMovimento;
+
+    //<editor-fold desc="Informações do Movimento">
+    @FXML
+    private Label lblTituloMF;
+
+    @FXML
+    private Label lblTipoMF;
+
+    @FXML
+    private Label lblValorMF;
+
+    @FXML
+    private Label lblDataMF;
+
+    @FXML
+    private Label lblDescricaoMF;
+    //</editor-fold>
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         choicePesquisa.setItems(FXCollections.observableArrayList(TipoPesquisa.values()));
         choiceReferencia.setItems(FXCollections.observableArrayList(Meses.values()));
+        choicePesquisa.setValue(TipoPesquisa.REFERENCIA);
+        habilitarPesquisaReferencia();
+        listTimeline.setPlaceholder(new Label("Sem informações"));
+        tpMovimento.setVisible(false);
 
         // faz validações das preferências (cores...)
         definirDataMaxima();
 
-        /*choiceReferencia.setVisible(false);
-        dtInicioPeriodo.setVisible(false);
-        dtFimPeriodo.setVisible(false);*/
+        choicePesquisa.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<TipoPesquisa>() {
+            @Override
+            public void changed(ObservableValue<? extends TipoPesquisa> observableValue, TipoPesquisa tipoPesquisa, TipoPesquisa t1) {
+                if (choicePesquisa.getValue().equals(TipoPesquisa.REFERENCIA)) {
+                    habilitarPesquisaReferencia();
+                } else if (choicePesquisa.getValue().equals(TipoPesquisa.PERIODO)) {
+                    habilitarPesquisaPeriodo();
+                }
+            }
+        });
 
         btnPesquisar.setOnMouseClicked(event -> {
             if (validacoesCampos())
                 pesquisar();
+        });
+
+        listTimeline.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<HBox>() {
+            @Override
+            public void changed(ObservableValue<? extends HBox> observableValue, HBox hBox, HBox t1) {
+                int id = listTimeline.getSelectionModel().getSelectedIndex();
+                if (id >= 0)
+                    mostrarDetalhesMovimento(id);
+            }
         });
     }
 
@@ -90,6 +138,8 @@ public class TimelineController implements Initializable {
     }
 
     public void pesquisar() {
+        tpMovimento.setVisible(false);
+
         Date dataInicial;
         Date dataFinal;
 
@@ -130,21 +180,29 @@ public class TimelineController implements Initializable {
     }
 
     public void montarListar() {
-        listTimeline = new ListView<>();
-
         ArrayList<HBox> items = new ArrayList<>();
 
         for (MovimentoFinanceiroVO movimento : movimentos) {
-            HBox hbox = new HBox(8);
+            HBox hbox = new HBox(2);
+            hbox.setAlignment(Pos.CENTER);
 
-            VBox vbLeft = new VBox(8);
+            VBox vbLeft = new VBox(2);
             vbLeft.setAlignment(Pos.CENTER_LEFT);
-            vbLeft.getChildren().addAll(new Label(movimento.getTipo().getDescricao()), new Label(movimento.getTitulo()));
-
-            VBox vbRight = new VBox(8);
+            VBox vbRight = new VBox(2);
             vbRight.setAlignment(Pos.CENTER_RIGHT);
-            SimpleDateFormat dataFormat = new SimpleDateFormat("dd-MM-yyyy");
-            vbRight.getChildren().addAll(new Label(movimento.getTipo().getSimbolo() + " " + movimento.getValor()), new Label(dataFormat.format(movimento.getData())));
+
+            hbox.setHgrow(vbLeft, Priority.ALWAYS);
+
+            Label lblMovimentoMvt = new Label(movimento.getTipo().getDescricao());
+            lblMovimentoMvt.setFont(new Font("System Bold", 12));
+            Label lblTituloMvt = new Label(movimento.getTitulo());
+            vbLeft.getChildren().addAll(lblMovimentoMvt, lblTituloMvt);
+
+            Label lblValorMvt = new Label(movimento.getTipo().getSimbolo() + " " + Formatacao.converterDoubleParaReal(movimento.getValor()));
+            lblValorMvt.setFont(new Font("System Bold", 12));
+            lblValorMvt.setTextFill(movimento.getTipo().equals(TipoMovimento.RENDA) ? Paint.valueOf("GREEN") : Paint.valueOf("RED"));
+            Label lblDataMvt = new Label(Formatacao.formatarData(movimento.getData()));
+            vbRight.getChildren().addAll(lblValorMvt, lblDataMvt);
 
             hbox.getChildren().addAll(vbLeft, vbRight);
 
@@ -152,6 +210,18 @@ public class TimelineController implements Initializable {
         }
 
         listTimeline.setItems(FXCollections.observableArrayList(items));
+    }
+
+    public void mostrarDetalhesMovimento(int id) {
+        MovimentoFinanceiroVO mvt = movimentos.get(id);
+
+        lblTituloMF.setText(mvt.getTitulo());
+        lblTipoMF.setText(mvt.getTipo().getTitulo());
+        lblValorMF.setText(Formatacao.converterDoubleParaReal(mvt.getValor()));
+        lblDataMF.setText(Formatacao.formatarData(mvt.getData()));
+        lblDescricaoMF.setText(mvt.getDescricao());
+
+        tpMovimento.setVisible(true);
     }
 
     public void organizarMovimentos() {
@@ -265,6 +335,20 @@ public class TimelineController implements Initializable {
         dtFimPeriodo.setValue(maxDate);
         setDataInicioAux(inicioDoMes);
         setDataFinalAux(maxDate);
+    }
+
+    public void habilitarPesquisaReferencia() {
+        lblReferencia.setVisible(true);
+        choiceReferencia.setVisible(true);
+        dtInicioPeriodo.setVisible(false);
+        dtFimPeriodo.setVisible(false);
+    }
+
+    public void habilitarPesquisaPeriodo() {
+        lblReferencia.setVisible(false);
+        choiceReferencia.setVisible(false);
+        dtInicioPeriodo.setVisible(true);
+        dtFimPeriodo.setVisible(true);
     }
 
     public LocalDate getDataInicioAux() {

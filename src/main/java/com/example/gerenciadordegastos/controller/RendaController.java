@@ -5,6 +5,8 @@ import com.example.gerenciadordegastos.model.entity.Renda;
 import com.example.gerenciadordegastos.model.entity.Usuario;
 import com.example.gerenciadordegastos.util.GFAlert;
 import com.example.gerenciadordegastos.util.Utils;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -79,8 +81,11 @@ public class RendaController implements Initializable {
             adicionar();
         });
 
-        tableRendas.setOnMouseClicked(event -> {
-            desabilitarBotoesTabela(false);
+        tableRendas.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
+            @Override
+            public void changed(ObservableValue observableValue, Object o, Object t1) {
+                desabilitarBotoesTabela(false);
+            }
         });
 
         btnAlterarRenda.setOnMouseClicked(event -> {
@@ -112,7 +117,7 @@ public class RendaController implements Initializable {
     }
 
     public void alterarRenda() {
-        //
+        // TODO: Criar Alteração de renda
     }
 
     public void excluirRenda() {

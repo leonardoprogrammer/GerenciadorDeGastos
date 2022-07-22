@@ -5,6 +5,8 @@ import com.example.gerenciadordegastos.model.entity.Gasto;
 import com.example.gerenciadordegastos.model.entity.Usuario;
 import com.example.gerenciadordegastos.util.GFAlert;
 import com.example.gerenciadordegastos.util.Utils;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -83,8 +85,11 @@ public class GastosController implements Initializable {
             adicionar();
         });
 
-        tableGastos.setOnMouseClicked(event -> {
-            desabilitarBotoesTabela(false);
+        tableGastos.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
+            @Override
+            public void changed(ObservableValue observableValue, Object o, Object t1) {
+                desabilitarBotoesTabela(false);
+            }
         });
 
         btnAlterarGasto.setOnMouseClicked(event -> {
@@ -116,7 +121,7 @@ public class GastosController implements Initializable {
     }
 
     public void alterarGasto() {
-        //
+        // TODO: Criar Alteração de gasto
     }
 
     public void excluirGasto() {
