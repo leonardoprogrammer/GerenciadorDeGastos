@@ -66,7 +66,7 @@
                </font>
             </Label>
             <PasswordField fx:id="txtSenhaNova" layoutX="14.0" layoutY="109.0" prefHeight="25.0" prefWidth="204.0" promptText="Digite a sua nova senha" style="-fx-background-color: #a8acbd;" />
-            <PasswordField fx:id="txtSenhaNovaValid" layoutX="14.0" layoutY="146.0" prefHeight="25.0" prefWidth="204.0" promptText="Repita a senha" style="-fx-background-color: #a8acbd;" />
+            <PasswordField fx:id="txtSenhaNovaValid" layoutX="14.0" layoutY="146.0" prefHeight="25.0" prefWidth="204.0" promptText="Redigite a senha" style="-fx-background-color: #a8acbd;" />
             <HBox alignment="CENTER" layoutX="16.0" layoutY="180.0" prefHeight="41.0" prefWidth="200.0">
                <children>
                   <Button fx:id="btnCancelarSenha" mnemonicParsing="false" style="-fx-background-color: #ff3333;" text="Cancelar" textFill="WHITE">

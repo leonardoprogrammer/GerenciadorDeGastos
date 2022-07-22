@@ -30,7 +30,7 @@
                   <Font size="14.0" />
                </font></PasswordField>
             <Pane prefHeight="120.0" prefWidth="200.0" />
-            <PasswordField fx:id="txtPasswordValid" promptText="Repita sua senha" style="-fx-background-color: #0c3d54; -fx-text-fill: #d9d9d9;">
+            <PasswordField fx:id="txtPasswordValid" promptText="Redigite a senha" style="-fx-background-color: #0c3d54; -fx-text-fill: #d9d9d9;">
                <font>
                   <Font size="14.0" />
                </font></PasswordField>

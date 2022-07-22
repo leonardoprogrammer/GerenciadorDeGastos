@@ -2,18 +2,18 @@ package com.example.gerenciadordegastos.enums;
 
 public enum Meses {
 
-    JANEIRO(1, "Janeiro", "Jan"),
-    FEVEREIRO(2, "Fevereiro", "Fev"),
-    MARCO(3, "Março", "Mar"),
-    ABRIL(4, "Abril", "Abril"),
-    MAIO(5, "Maio", "Maio"),
-    JUNHO(6, "Junho", "Jun"),
-    JULHO(7, "Julho", "Jul"),
-    AGOSTO(8, "Agosto", "Ago"),
-    SETEMBRO(9, "Setembro", "Set"),
-    OUTRUBRO(10, "Outubro", "Out"),
-    NOVEMBRO(11, "Novembro", "Nov"),
-    DEZEMBRO(12, "Dezembro", "Dez");
+    JANEIRO(1, "Janeiro", "JAN"),
+    FEVEREIRO(2, "Fevereiro", "FEV"),
+    MARCO(3, "Março", "MAR"),
+    ABRIL(4, "Abril", "ABR"),
+    MAIO(5, "Maio", "MAI"),
+    JUNHO(6, "Junho", "JUN"),
+    JULHO(7, "Julho", "JUL"),
+    AGOSTO(8, "Agosto", "AGO"),
+    SETEMBRO(9, "Setembro", "SET"),
+    OUTRUBRO(10, "Outubro", "OUT"),
+    NOVEMBRO(11, "Novembro", "NOV"),
+    DEZEMBRO(12, "Dezembro", "DEZ");
 
     private final int id;
     private final String nome;

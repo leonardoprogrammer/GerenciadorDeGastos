@@ -100,7 +100,7 @@ public class TimelineController implements Initializable {
         choiceReferencia.setItems(FXCollections.observableArrayList(Meses.values()));
         choicePesquisa.setValue(TipoPesquisa.REFERENCIA);
         habilitarPesquisaReferencia();
-        listTimeline.setPlaceholder(new Label("Sem informações"));
+        listTimeline.setPlaceholder(new Label("Não há movimentos financeiros nesta referência"));
         tpMovimento.setVisible(false);
 
         // faz validações das preferências (cores...)
@@ -145,8 +145,9 @@ public class TimelineController implements Initializable {
 
         if (TipoPesquisa.REFERENCIA.equals(choicePesquisa.getValue())) {
             Calendar calendar = Calendar.getInstance();
+            calendar.set(Calendar.MONTH, choiceReferencia.getValue().getId() - 1);
             dataInicial = Date.valueOf(LocalDate.of(calendar.get(Calendar.YEAR), choiceReferencia.getValue().getId(), 1));
-            dataFinal = Date.valueOf(LocalDate.of(calendar.get(Calendar.YEAR), choiceReferencia.getValue().getId(), 31));
+            dataFinal = Date.valueOf(LocalDate.of(calendar.get(Calendar.YEAR), choiceReferencia.getValue().getId(), calendar.getActualMaximum(Calendar.DAY_OF_MONTH)));
         } else {
             dataInicial = Date.valueOf(dtInicioPeriodo.getValue());
             dataFinal = Date.valueOf(dtFimPeriodo.getValue());
@@ -193,15 +194,28 @@ public class TimelineController implements Initializable {
 
             hbox.setHgrow(vbLeft, Priority.ALWAYS);
 
-            Label lblMovimentoMvt = new Label(movimento.getTipo().getDescricao());
+            String sMovimento = movimento.getTipo().getDescricao();
+            String sTitulo = movimento.getTitulo();
+
+            Label lblMovimentoMvt = new Label(sMovimento);
+            Label lblTituloMvt = new Label(sTitulo);
+
             lblMovimentoMvt.setFont(new Font("System Bold", 12));
-            Label lblTituloMvt = new Label(movimento.getTitulo());
+
             vbLeft.getChildren().addAll(lblMovimentoMvt, lblTituloMvt);
 
-            Label lblValorMvt = new Label(movimento.getTipo().getSimbolo() + " " + Formatacao.converterDoubleParaReal(movimento.getValor()));
+            String sValor = movimento.getTipo().getSimbolo() + " " + Formatacao.converterDoubleParaReal(movimento.getValor());
+            String sData = String.valueOf(Utils.getDiaDeUmaData(movimento.getData())) + " " + Meses.get(Utils.getMesDeUmaData(movimento.getData())).getAbreviacao();
+            if (!Utils.isAnosIguais(movimento.getData(), Calendar.getInstance().getTime())) {
+                sData += " " + String.valueOf(Utils.getAnoDeUmaData(movimento.getData()));
+            }
+
+            Label lblValorMvt = new Label(sValor);
+            Label lblDataMvt = new Label(sData);
+
             lblValorMvt.setFont(new Font("System Bold", 12));
             lblValorMvt.setTextFill(movimento.getTipo().equals(TipoMovimento.RENDA) ? Paint.valueOf("GREEN") : Paint.valueOf("RED"));
-            Label lblDataMvt = new Label(Formatacao.formatarData(movimento.getData()));
+
             vbRight.getChildren().addAll(lblValorMvt, lblDataMvt);
 
             hbox.getChildren().addAll(vbLeft, vbRight);

@@ -244,16 +244,43 @@ public class Utils {
         return calendar.getTime();
     }
 
-    public static int getAnoDeUmaData(Date data) {
+    public static Integer getAnoDeUmaData(Date data) {
+        if (data == null)
+            return null;
+
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(data);
         return calendar.get(Calendar.YEAR);
     }
 
-    public static int getMesDeUmaData(Date data) {
+    public static Integer getMesDeUmaData(Date data) {
+        if (data == null)
+            return null;
+
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(data);
-        return calendar.get(Calendar.MONTH);
+        return calendar.get(Calendar.MONTH) + 1;
+    }
+
+    public static Integer getDiaDeUmaData(Date data) {
+        if (data == null)
+            return null;
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(data);
+        return calendar.get(Calendar.DAY_OF_MONTH);
+    }
+
+    public static boolean isAnosIguais(Date date1, Date date2) {
+        if (date1 == null || date2 == null)
+            return false;
+
+        Calendar data1 = Calendar.getInstance();
+        Calendar data2 = Calendar.getInstance();
+        data1.setTime(date1);
+        data2.setTime(date2);
+
+        return data1.get(Calendar.YEAR) == data2.get(Calendar.YEAR);
     }
 
     public static boolean isPrimeiroSemestre(){
