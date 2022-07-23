@@ -9,6 +9,7 @@ import com.example.gerenciadordegastos.model.entity.Gasto;
 import com.example.gerenciadordegastos.model.entity.Renda;
 import com.example.gerenciadordegastos.model.entity.Usuario;
 import com.example.gerenciadordegastos.util.GFAlert;
+import com.example.gerenciadordegastos.util.MascarasFX;
 import com.example.gerenciadordegastos.util.Utils;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -77,6 +78,9 @@ public class DashboardController implements Initializable {
             if (validationsData())
                 calcular();
         });
+
+        MascarasFX.mascaraData(dtDataInicial);
+        MascarasFX.mascaraData(dtDataFinal);
     }
 
     public DashboardController(Usuario usuario) {

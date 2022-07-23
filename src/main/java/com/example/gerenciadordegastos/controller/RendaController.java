@@ -4,6 +4,7 @@ import com.example.gerenciadordegastos.business.SessionBeanRenda;
 import com.example.gerenciadordegastos.model.entity.Renda;
 import com.example.gerenciadordegastos.model.entity.Usuario;
 import com.example.gerenciadordegastos.util.GFAlert;
+import com.example.gerenciadordegastos.util.MascarasFX;
 import com.example.gerenciadordegastos.util.Utils;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -95,6 +96,9 @@ public class RendaController implements Initializable {
         btnExcluirRenda.setOnMouseClicked(event -> {
             excluirRenda();
         });
+
+        MascarasFX.mascaraNumero(txtValor);
+        MascarasFX.mascaraData(dtData);
     }
 
     public RendaController(Usuario usuario) {

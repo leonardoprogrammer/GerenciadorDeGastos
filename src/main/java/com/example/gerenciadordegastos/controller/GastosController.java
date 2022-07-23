@@ -4,6 +4,7 @@ import com.example.gerenciadordegastos.business.SessionBeanGasto;
 import com.example.gerenciadordegastos.model.entity.Gasto;
 import com.example.gerenciadordegastos.model.entity.Usuario;
 import com.example.gerenciadordegastos.util.GFAlert;
+import com.example.gerenciadordegastos.util.MascarasFX;
 import com.example.gerenciadordegastos.util.Utils;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -99,6 +100,9 @@ public class GastosController implements Initializable {
         btnExcluirGasto.setOnMouseClicked(event -> {
             excluirGasto();
         });
+
+        MascarasFX.mascaraNumero(txtValor);
+        MascarasFX.mascaraData(dtData);
     }
 
     public GastosController(Usuario usuario) {

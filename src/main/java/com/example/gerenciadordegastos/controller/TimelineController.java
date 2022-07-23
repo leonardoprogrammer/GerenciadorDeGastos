@@ -40,6 +40,7 @@ public class TimelineController implements Initializable {
     private Usuario usuario;
     private List<Gasto> gastos = new ArrayList<>();
     private List<Renda> rendas = new ArrayList<>();
+    private Meses referenciaAux;
     private LocalDate dataInicioAux;
     private LocalDate dataFinalAux;
     private List<MovimentoFinanceiroVO> movimentos = new ArrayList<>();
@@ -106,6 +107,8 @@ public class TimelineController implements Initializable {
         // faz validações das preferências (cores...)
         definirDataMaxima();
 
+        pesquisar();
+
         choicePesquisa.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<TipoPesquisa>() {
             @Override
             public void changed(ObservableValue<? extends TipoPesquisa> observableValue, TipoPesquisa tipoPesquisa, TipoPesquisa t1) {
@@ -157,6 +160,7 @@ public class TimelineController implements Initializable {
         rendas = sessionBeanRenda.recuperarRendasPorPeriodo(dataInicial, dataFinal, usuario.getId());
 
         if (!gastos.isEmpty() || !rendas.isEmpty()) {
+            setReferenciaAux(choiceReferencia.getValue());
             setDataInicioAux(dtInicioPeriodo.getValue());
             setDataFinalAux(dtFimPeriodo.getValue());
 
@@ -175,6 +179,7 @@ public class TimelineController implements Initializable {
                 GFAlert.makeAlertWarning("Não há gastos e rendas nesta referência.");
             else
                 GFAlert.makeAlertWarning("Não há gastos e rendas neste período.");
+            choiceReferencia.setValue(getReferenciaAux());
             dtInicioPeriodo.setValue(getDataInicioAux());
             dtFimPeriodo.setValue(getDataFinalAux());
         }
@@ -352,17 +357,31 @@ public class TimelineController implements Initializable {
     }
 
     public void habilitarPesquisaReferencia() {
-        lblReferencia.setVisible(true);
-        choiceReferencia.setVisible(true);
         dtInicioPeriodo.setVisible(false);
         dtFimPeriodo.setVisible(false);
+
+        lblReferencia.setVisible(true);
+        choiceReferencia.setVisible(true);
+        btnPesquisar.setLayoutX(381);
     }
 
     public void habilitarPesquisaPeriodo() {
         lblReferencia.setVisible(false);
         choiceReferencia.setVisible(false);
+
+        dtInicioPeriodo.setLayoutX(207);
+        dtFimPeriodo.setLayoutX(333);
         dtInicioPeriodo.setVisible(true);
         dtFimPeriodo.setVisible(true);
+        btnPesquisar.setLayoutX(467);
+    }
+
+    public Meses getReferenciaAux() {
+        return referenciaAux;
+    }
+
+    public void setReferenciaAux(Meses referenciaAux) {
+        this.referenciaAux = referenciaAux;
     }
 
     public LocalDate getDataInicioAux() {

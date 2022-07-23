@@ -3,6 +3,7 @@ package com.example.gerenciadordegastos.controller;
 import com.example.gerenciadordegastos.business.SessionBeanUsuario;
 import com.example.gerenciadordegastos.model.entity.Usuario;
 import com.example.gerenciadordegastos.util.GFAlert;
+import com.example.gerenciadordegastos.util.MascarasFX;
 import com.example.gerenciadordegastos.util.Utils;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -96,6 +97,8 @@ public class PerfilController implements Initializable {
         btnAlterar.setOnMouseClicked(event -> {
             alterarSenha();
         });
+
+        MascarasFX.mascaraData(dtNascimento);
     }
 
     public PerfilController(Usuario usuario) {

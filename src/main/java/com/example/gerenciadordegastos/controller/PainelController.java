@@ -90,7 +90,7 @@ public class PainelController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        lblMenuClose.setVisible(false);
+        openSidebar();
 
         lblTitulo.setText("Olá, " + usuario.getNome());
 
@@ -108,35 +108,11 @@ public class PainelController implements Initializable {
 
         sidebar.setTranslateX(-176);
         lblMenu.setOnMouseClicked(event -> {
-            TranslateTransition slide = new TranslateTransition();
-            slide.setDuration(Duration.seconds(0.4));
-            slide.setNode(sidebar);
-
-            slide.setToX(0);
-            slide.play();
-
-            sidebar.setTranslateX(-176);
-
-            slide.setOnFinished((ActionEvent e) -> {
-                lblMenu.setVisible(false);
-                lblMenuClose.setVisible(true);
-            });
+            openSidebar();
         });
 
         lblMenuClose.setOnMouseClicked(event -> {
-            TranslateTransition slide = new TranslateTransition();
-            slide.setDuration(Duration.seconds(0.4));
-            slide.setNode(sidebar);
-
-            slide.setToX(-176);
-            slide.play();
-
-            sidebar.setTranslateX(0);
-
-            slide.setOnFinished((ActionEvent e) -> {
-                lblMenu.setVisible(true);
-                lblMenuClose.setVisible(false);
-            });
+            closeSidebar();
         });
 
         btnTimeline.setOnMouseClicked(event -> {
@@ -203,6 +179,38 @@ public class PainelController implements Initializable {
             Logger.getLogger(PainelController.class.getName()).log(Level.SEVERE, null, ex);
             ex.printStackTrace();
         }
+    }
+
+    private void openSidebar() {
+        TranslateTransition slide = new TranslateTransition();
+        slide.setDuration(Duration.seconds(0.4));
+        slide.setNode(sidebar);
+
+        slide.setToX(0);
+        slide.play();
+
+        sidebar.setTranslateX(-176);
+
+        slide.setOnFinished((ActionEvent e) -> {
+            lblMenu.setVisible(false);
+            lblMenuClose.setVisible(true);
+        });
+    }
+
+    private void closeSidebar() {
+        TranslateTransition slide = new TranslateTransition();
+        slide.setDuration(Duration.seconds(0.4));
+        slide.setNode(sidebar);
+
+        slide.setToX(-176);
+        slide.play();
+
+        sidebar.setTranslateX(0);
+
+        slide.setOnFinished((ActionEvent e) -> {
+            lblMenu.setVisible(true);
+            lblMenuClose.setVisible(false);
+        });
     }
 
     private void alterarTema(ThemeMode tema) {

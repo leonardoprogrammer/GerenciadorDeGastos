@@ -10,6 +10,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
@@ -50,17 +52,27 @@ public class NovaContaController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         btnCriarConta.setOnMouseClicked(event -> {
-            if (isCamposValidos()) {
-                auth = sessionBeanAutenticacao.checkUserExists(txtUsername.getText().trim());
-                if (auth.isSucess()) {
-                    Usuario usuario = new Usuario(txtUsername.getText().trim(), txtPassword.getText().trim(), txtName.getText().trim(), txtEmail.getText().trim());
-                    sessionBeanUsuario.registrarUsuario(usuario);
-                    GFAlert.makeAlertInfo("Parabéns!\nSeu cadastro foi realizado!");
-                } else {
-                    GFAlert.makeAlertWarning(auth.getMsgRetorno());
-                }
+            cadastrar();
+        });
+
+        anchorPane.setOnKeyPressed((KeyEvent t) -> {
+            if (t.getCode() == KeyCode.ENTER) {
+                cadastrar();
             }
         });
+    }
+
+    public void cadastrar() {
+        if (isCamposValidos()) {
+            auth = sessionBeanAutenticacao.checkUserExists(txtUsername.getText().trim());
+            if (auth.isSucess()) {
+                Usuario usuario = new Usuario(txtUsername.getText().trim(), txtPassword.getText().trim(), txtName.getText().trim(), txtEmail.getText().trim());
+                sessionBeanUsuario.registrarUsuario(usuario);
+                GFAlert.makeAlertInfo("Parabéns!\nSeu cadastro foi realizado!");
+            } else {
+                GFAlert.makeAlertWarning(auth.getMsgRetorno());
+            }
+        }
     }
 
     public boolean isCamposValidos() {
