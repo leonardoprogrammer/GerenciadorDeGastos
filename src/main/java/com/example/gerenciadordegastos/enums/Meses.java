@@ -11,7 +11,7 @@ public enum Meses {
     JULHO(7, "Julho", "JUL"),
     AGOSTO(8, "Agosto", "AGO"),
     SETEMBRO(9, "Setembro", "SET"),
-    OUTRUBRO(10, "Outubro", "OUT"),
+    OUTUBRO(10, "Outubro", "OUT"),
     NOVEMBRO(11, "Novembro", "NOV"),
     DEZEMBRO(12, "Dezembro", "DEZ");
 

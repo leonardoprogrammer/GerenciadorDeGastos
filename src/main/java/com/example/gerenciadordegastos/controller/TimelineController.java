@@ -101,13 +101,10 @@ public class TimelineController implements Initializable {
         choiceReferencia.setItems(FXCollections.observableArrayList(Meses.values()));
         choicePesquisa.setValue(TipoPesquisa.REFERENCIA);
         habilitarPesquisaReferencia();
-        listTimeline.setPlaceholder(new Label("Não há movimentos financeiros nesta referência"));
+        listTimeline.setPlaceholder(new Label("Sem informações para mostrar"));
         tpMovimento.setVisible(false);
 
-        // faz validações das preferências (cores...)
         definirDataMaxima();
-
-        pesquisar();
 
         choicePesquisa.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<TipoPesquisa>() {
             @Override
@@ -168,8 +165,8 @@ public class TimelineController implements Initializable {
             double totalRendas = calcularTotalRendas();
             double remanescente = totalRendas - totalGastos;
 
-            txtTotalGastos.setText("R$ " + Formatacao.converterDoubleParaReal(totalGastos));
             txtTotalRendas.setText("R$ " + Formatacao.converterDoubleParaReal(totalRendas));
+            txtTotalGastos.setText("R$ " + Formatacao.converterDoubleParaReal(totalGastos));
             txtRemanescente.setText("R$ " + Formatacao.converterDoubleParaReal(remanescente));
 
             organizarMovimentos();

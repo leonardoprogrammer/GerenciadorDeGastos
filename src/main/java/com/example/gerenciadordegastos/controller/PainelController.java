@@ -34,9 +34,6 @@ public class PainelController implements Initializable {
     private Label lblTitulo;
 
     @FXML
-    private ImageView imgLightMode;
-
-    @FXML
     private ImageView imgClose;
 
     @FXML
@@ -72,9 +69,6 @@ public class PainelController implements Initializable {
     private Button btnPerfil;
 
     @FXML
-    private Button btnPreferencias;
-
-    @FXML
     private Button btnSobre;
 
     @FXML
@@ -96,14 +90,8 @@ public class PainelController implements Initializable {
 
         carregarFragment("ui/frgTimeline.fxml", new TimelineController(usuario, null));
 
-        alterarTema(ThemeMode.LIGHT_MODE);
-
         imgClose.setOnMouseClicked(event -> {
             System.exit(0);
-        });
-
-        imgLightMode.setOnMouseClicked(event -> {
-            alterarTema(null);
         });
 
         sidebar.setTranslateX(-176);
@@ -141,10 +129,6 @@ public class PainelController implements Initializable {
 
         btnPerfil.setOnMouseClicked(event -> {
             carregarFragment("ui/frgPerfil.fxml", new PerfilController(usuario));
-        });
-
-        btnPreferencias.setOnMouseClicked(event -> {
-            carregarFragment("ui/frgPreferencias.fxml", new PreferenciasController(usuario));
         });
 
         btnSobre.setOnMouseClicked(event -> {
@@ -211,22 +195,5 @@ public class PainelController implements Initializable {
             lblMenu.setVisible(true);
             lblMenuClose.setVisible(false);
         });
-    }
-
-    private void alterarTema(ThemeMode tema) {
-        if (tema != null) {
-            themeMode = tema;
-        } else {
-            switch (themeMode) {
-                case LIGHT_MODE:
-                    imgLightMode.setImage(new Image(Main.class.getResource("icons/moon_symbol_30px.png").toString()));
-                    themeMode = ThemeMode.DARK_MODE;
-                    break;
-                case DARK_MODE:
-                    imgLightMode.setImage(new Image(Main.class.getResource("icons/sun_30px.png").toString()));
-                    themeMode = ThemeMode.LIGHT_MODE;
-                    break;
-            }
-        }
     }
 }

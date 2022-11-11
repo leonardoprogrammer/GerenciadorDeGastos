@@ -65,9 +65,6 @@ public class GastosController implements Initializable {
     //</editor-fold>
 
     @FXML
-    private Button btnAlterarGasto;
-
-    @FXML
     private Button btnExcluirGasto;
 
     @Override
@@ -91,10 +88,6 @@ public class GastosController implements Initializable {
             public void changed(ObservableValue observableValue, Object o, Object t1) {
                 desabilitarBotoesTabela(false);
             }
-        });
-
-        btnAlterarGasto.setOnMouseClicked(event -> {
-            alterarGasto();
         });
 
         btnExcluirGasto.setOnMouseClicked(event -> {
@@ -195,7 +188,6 @@ public class GastosController implements Initializable {
     }
 
     public void desabilitarBotoesTabela(boolean logica) {
-        btnAlterarGasto.setDisable(logica);
         btnExcluirGasto.setDisable(logica);
     }
 

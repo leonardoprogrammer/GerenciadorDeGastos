@@ -61,9 +61,6 @@ public class RendaController implements Initializable {
     //</editor-fold>
 
     @FXML
-    private Button btnAlterarRenda;
-
-    @FXML
     private Button btnExcluirRenda;
 
     @Override
@@ -87,10 +84,6 @@ public class RendaController implements Initializable {
             public void changed(ObservableValue observableValue, Object o, Object t1) {
                 desabilitarBotoesTabela(false);
             }
-        });
-
-        btnAlterarRenda.setOnMouseClicked(event -> {
-            alterarRenda();
         });
 
         btnExcluirRenda.setOnMouseClicked(event -> {
@@ -191,7 +184,6 @@ public class RendaController implements Initializable {
     }
 
     public void desabilitarBotoesTabela(boolean logica) {
-        btnAlterarRenda.setDisable(logica);
         btnExcluirRenda.setDisable(logica);
     }
 

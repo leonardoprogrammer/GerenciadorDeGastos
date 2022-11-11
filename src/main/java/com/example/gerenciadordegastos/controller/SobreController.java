@@ -23,6 +23,9 @@ public class SobreController implements Initializable {
     private Label lblVersaoAplicacao;
 
     @FXML
+    private Label lblDescricaoSoftware;
+
+    @FXML
     private Label lblGithub;
 
     @FXML
@@ -39,10 +42,13 @@ public class SobreController implements Initializable {
         lblNomeAplicacao.setText(Constantes.NAME_APPLICATION);
         lblVersaoAplicacao.setText("Versão: " + Constantes.VERSION_APPLICATION);
 
+        lblDescricaoSoftware.setText("Software open source, não comercializado, para controle financeiro pessoal.\n" +
+                "Gerencie seus gastos e suas rendas mensais com praticidade.\n");
+
         lblTextDescricao.setText("Desenvolvedor Java\n" +
                 "Formado em Análise e Desenvolvimento de Sistemas\n" +
-                "Criei este software para fins de prática e estudo\n" +
-                "Sinta-se a vontade para usá-lo da forma que melhor lhe agradar");
+                "Criei este software com intuito de prática e estudo\n" +
+                "Sinta-se a vontade para usá-lo à fins de uso pessoal");
 
         lblGithub.setOnMouseClicked(event -> {
             abrirLink(linkGithub);
