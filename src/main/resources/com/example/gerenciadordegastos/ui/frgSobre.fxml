@@ -96,6 +96,6 @@
                </graphic>
             </Label>
          </top></BorderPane>
-      <Label fx:id="lblDescricaoSoftware" alignment="TOP_LEFT" layoutX="67.0" layoutY="121.0" prefHeight="66.0" prefWidth="372.0" text="Descrição do software" wrapText="true" />
+      <Label fx:id="lblDescricaoSoftware" alignment="TOP_LEFT" layoutX="67.0" layoutY="121.0" prefHeight="66.0" prefWidth="491.0" text="Descrição do software" wrapText="true" />
    </children>
 </AnchorPane>
