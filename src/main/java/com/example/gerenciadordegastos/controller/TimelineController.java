@@ -130,6 +130,8 @@ public class TimelineController implements Initializable {
                     mostrarDetalhesMovimento(id);
             }
         });
+
+        pesquisar();
     }
 
     public TimelineController(Usuario usuario, Preferencias preferencias) {

@@ -54,8 +54,8 @@ public class PainelController implements Initializable {
     @FXML
     private Button btnDashboard;
 
-    @FXML
-    private Button btnRelatorios;
+    /*@FXML
+    private Button btnRelatorios;*/
 
     @FXML
     private AnchorPane sidebar;
@@ -119,9 +119,9 @@ public class PainelController implements Initializable {
             carregarFragment("ui/frgDashboard.fxml", new DashboardController(usuario));
         });
 
-        btnRelatorios.setOnMouseClicked(event -> {
+        /*btnRelatorios.setOnMouseClicked(event -> {
             carregarFragment("ui/frgRelatorios.fxml", new RelatoriosController(usuario));
-        });
+        });*/
 
         btnInicio.setOnMouseClicked(event -> {
             carregarFragment("ui/frgTimeline.fxml", new TimelineController(usuario, null));
