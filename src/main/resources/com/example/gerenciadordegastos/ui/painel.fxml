@@ -7,190 +7,238 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="500.0" prefWidth="1000.0" stylesheets="@../css/Style.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <BorderPane layoutX="69.0" layoutY="62.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <top>
-            <AnchorPane prefHeight="65.0" prefWidth="200.0" style="-fx-background-color: WHITE;" BorderPane.alignment="CENTER">
-               <children>
-                  <Pane layoutX="238.0" layoutY="14.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: #032d4d;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                  <HBox alignment="CENTER" prefHeight="25.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-                     <children>
-                        <Separator maxHeight="-Infinity" orientation="VERTICAL" prefHeight="15.0" prefWidth="0.0" />
-                        <Label fx:id="lblTitulo" prefHeight="17.0" prefWidth="350.0" text="Olá, Fulano da Silva" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets left="5.0" />
-                           </HBox.margin>
+<AnchorPane prefHeight="500.0" prefWidth="1000.0" stylesheets="@../css/Style.css"
+            xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <BorderPane layoutX="69.0" layoutY="62.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0"
+                    AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <top>
+                <AnchorPane prefHeight="65.0" prefWidth="200.0" style="-fx-background-color: WHITE;"
+                            BorderPane.alignment="CENTER">
+                    <children>
+                        <Pane layoutX="238.0" layoutY="14.0" prefHeight="25.0" prefWidth="200.0"
+                              style="-fx-background-color: #032d4d;" AnchorPane.leftAnchor="0.0"
+                              AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
+                        <HBox alignment="CENTER" prefHeight="25.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0"
+                              AnchorPane.rightAnchor="0.0">
+                            <children>
+                                <Separator maxHeight="-Infinity" orientation="VERTICAL" prefHeight="15.0"
+                                           prefWidth="0.0"/>
+                                <Label fx:id="lblTitulo" prefHeight="17.0" prefWidth="350.0" text="Olá, Fulano da Silva"
+                                       textFill="WHITE">
+                                    <font>
+                                        <Font name="System Bold" size="12.0"/>
+                                    </font>
+                                    <HBox.margin>
+                                        <Insets left="5.0"/>
+                                    </HBox.margin>
+                                </Label>
+                                <Pane prefHeight="25.0" prefWidth="200.0" HBox.hgrow="ALWAYS"/>
+                                <ImageView fx:id="imgClose" fitHeight="22.0" fitWidth="22.0" pickOnBounds="true"
+                                           preserveRatio="true">
+                                    <image>
+                                        <Image url="@../icons/exit.png"/>
+                                    </image>
+                                </ImageView>
+                            </children>
+                        </HBox>
+                        <Label fx:id="lblMenu" layoutX="14.0" layoutY="37.0" text="MENU" textFill="#8a8888">
+                            <graphic>
+                                <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../icons/menu_24px.png"/>
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <font>
+                                <Font name="System Bold" size="14.0"/>
+                            </font>
+                            <cursor>
+                                <Cursor fx:constant="HAND"/>
+                            </cursor>
                         </Label>
-                        <Pane prefHeight="25.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                        <ImageView fx:id="imgClose" fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../icons/exit.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </HBox>
-                  <Label fx:id="lblMenu" layoutX="14.0" layoutY="37.0" text="MENU" textFill="#8a8888">
-                     <graphic>
-                        <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../icons/menu_24px.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Label>
-                  <Label fx:id="lblMenuClose" layoutX="14.0" layoutY="37.0" text="MENU" textFill="#8a8888">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                     <graphic>
-                        <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../icons/menu_24px.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Label>
-                  <HBox alignment="CENTER" layoutX="274.0" layoutY="1.0" prefHeight="43.0" prefWidth="525.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
-                     <children>
-                        <Button fx:id="btnTimeline" mnemonicParsing="false" prefHeight="38.0" prefWidth="136.0" style="-fx-background-color: WHITE;" text="Timeline" textFill="#4a4a4a">
-                           <graphic>
-                              <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../icons/timeline_24px.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
-                        <Button fx:id="btnGastos" mnemonicParsing="false" prefHeight="38.0" prefWidth="125.0" style="-fx-background-color: WHITE;" text="Gastos" textFill="#4a4a4a">
-                           <graphic>
-                              <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../icons/minus_48px.png" />
-                                 </image></ImageView>
-                           </graphic>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor></Button>
-                        <Button fx:id="btnRenda" mnemonicParsing="false" prefHeight="38.0" prefWidth="136.0" style="-fx-background-color: WHITE;" text="Renda" textFill="#4a4a4a">
-                           <graphic>
-                              <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../icons/Plus%20+_48px.png" />
-                                 </image></ImageView>
-                           </graphic>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor></Button>
-                        <Button fx:id="btnDashboard" mnemonicParsing="false" prefHeight="38.0" prefWidth="140.0" style="-fx-background-color: WHITE;" text="Dashboard" textFill="#4a4a4a">
-                           <graphic>
-                              <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../icons/statistics_24px.png" />
-                                 </image></ImageView>
-                           </graphic>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor></Button>
-                        <Button fx:id="btnRelatorios" mnemonicParsing="false" prefHeight="38.0" prefWidth="140.0" style="-fx-background-color: WHITE;" text="Relatórios" textFill="#4a4a4a">
-                           <graphic>
-                              <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../icons/Payment%20Check_24px.png" />
-                                 </image></ImageView>
-                           </graphic>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor></Button>
-                     </children>
-                  </HBox>
-               </children>
-            </AnchorPane>
-         </top>
-         <left>
-            <AnchorPane fx:id="sidebar" prefHeight="362.0" prefWidth="176.0" style="-fx-background-color: #0A4969;" BorderPane.alignment="CENTER">
-               <children>
-                  <VBox layoutX="38.0" layoutY="58.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="53.0">
-                     <children>
-                        <Button fx:id="btnInicio" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="38.0" prefWidth="176.0" style="-fx-background-color: #0A4969;" text="Início" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="15.0" />
-                           </font>
-                           <graphic>
-                              <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../icons/home.png" />
-                                 </image></ImageView>
-                           </graphic>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
-                        <Button fx:id="btnPerfil" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="38.0" prefWidth="176.0" style="-fx-background-color: #0A4969;" text="Meu perfil" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="15.0" />
-                           </font>
-                           <graphic>
-                              <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../icons/male_user_32px.png" />
-                                 </image></ImageView>
-                           </graphic>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
-                        <Button fx:id="btnSobre" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="38.0" prefWidth="176.0" style="-fx-background-color: #0A4969;" text="Sobre" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="15.0" />
-                           </font>
-                           <graphic>
-                              <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../icons/info_material_outlined_24px.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
-                        <Button fx:id="btnSair" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="38.0" prefWidth="176.0" style="-fx-background-color: #0A4969;" text="Sair" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="15.0" />
-                           </font>
-                           <graphic>
-                              <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../icons/exit_32px.png" />
-                                 </image></ImageView>
-                           </graphic>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor></Button>
-                     </children>
-                  </VBox>
-               </children>
-            </AnchorPane>
-         </left>
-         <center>
-            <StackPane fx:id="stackPane" prefHeight="435.0" prefWidth="844.0" BorderPane.alignment="CENTER" />
-         </center>
-      </BorderPane>
-   </children>
+                        <Label fx:id="lblMenuClose" layoutX="14.0" layoutY="37.0" text="MENU" textFill="#8a8888">
+                            <font>
+                                <Font name="System Bold" size="14.0"/>
+                            </font>
+                            <graphic>
+                                <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../icons/menu_24px.png"/>
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <cursor>
+                                <Cursor fx:constant="HAND"/>
+                            </cursor>
+                        </Label>
+                        <HBox alignment="CENTER" layoutX="274.0" layoutY="1.0" prefHeight="43.0" prefWidth="525.0"
+                              AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
+                            <children>
+                                <Button fx:id="btnTimeline" mnemonicParsing="false" prefHeight="38.0" prefWidth="136.0"
+                                        style="-fx-background-color: WHITE;" text="Timeline" textFill="#4a4a4a">
+                                    <graphic>
+                                        <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true"
+                                                   preserveRatio="true">
+                                            <image>
+                                                <Image url="@../icons/timeline_24px.png"/>
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND"/>
+                                    </cursor>
+                                </Button>
+                                <Button fx:id="btnGastos" mnemonicParsing="false" prefHeight="38.0" prefWidth="125.0"
+                                        style="-fx-background-color: WHITE;" text="Gastos" textFill="#4a4a4a">
+                                    <graphic>
+                                        <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true"
+                                                   preserveRatio="true">
+                                            <image>
+                                                <Image url="@../icons/minus_48px.png"/>
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND"/>
+                                    </cursor>
+                                </Button>
+                                <Button fx:id="btnRenda" mnemonicParsing="false" prefHeight="38.0" prefWidth="136.0"
+                                        style="-fx-background-color: WHITE;" text="Renda" textFill="#4a4a4a">
+                                    <graphic>
+                                        <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true"
+                                                   preserveRatio="true">
+                                            <image>
+                                                <Image url="@../icons/Plus%20+_48px.png"/>
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND"/>
+                                    </cursor>
+                                </Button>
+                                <Button fx:id="btnDashboard" mnemonicParsing="false" prefHeight="38.0" prefWidth="140.0"
+                                        style="-fx-background-color: WHITE;" text="Dashboard" textFill="#4a4a4a">
+                                    <graphic>
+                                        <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true"
+                                                   preserveRatio="true">
+                                            <image>
+                                                <Image url="@../icons/statistics_24px.png"/>
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND"/>
+                                    </cursor>
+                                </Button>
+                                <!--<Button fx:id="btnRelatorios" mnemonicParsing="false" prefHeight="38.0"
+                                        prefWidth="140.0" style="-fx-background-color: WHITE;" text="Relatórios"
+                                        textFill="#4a4a4a">
+                                    <graphic>
+                                        <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true"
+                                                   preserveRatio="true">
+                                            <image>
+                                                <Image url="@../icons/Payment%20Check_24px.png"/>
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND"/>
+                                    </cursor>
+                                </Button>-->
+                            </children>
+                        </HBox>
+                    </children>
+                </AnchorPane>
+            </top>
+            <left>
+                <AnchorPane fx:id="sidebar" prefHeight="362.0" prefWidth="176.0" style="-fx-background-color: #0A4969;"
+                            BorderPane.alignment="CENTER">
+                    <children>
+                        <VBox layoutX="38.0" layoutY="58.0" prefHeight="200.0" prefWidth="100.0"
+                              AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                              AnchorPane.topAnchor="53.0">
+                            <children>
+                                <Button fx:id="btnInicio" alignment="BASELINE_LEFT" mnemonicParsing="false"
+                                        prefHeight="38.0" prefWidth="176.0" style="-fx-background-color: #0A4969;"
+                                        text="Início" textFill="WHITE">
+                                    <font>
+                                        <Font name="System Bold" size="15.0"/>
+                                    </font>
+                                    <graphic>
+                                        <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true"
+                                                   preserveRatio="true">
+                                            <image>
+                                                <Image url="@../icons/home.png"/>
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND"/>
+                                    </cursor>
+                                </Button>
+                                <Button fx:id="btnPerfil" alignment="BASELINE_LEFT" mnemonicParsing="false"
+                                        prefHeight="38.0" prefWidth="176.0" style="-fx-background-color: #0A4969;"
+                                        text="Meu perfil" textFill="WHITE">
+                                    <font>
+                                        <Font name="System Bold" size="15.0"/>
+                                    </font>
+                                    <graphic>
+                                        <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true"
+                                                   preserveRatio="true">
+                                            <image>
+                                                <Image url="@../icons/male_user_32px.png"/>
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND"/>
+                                    </cursor>
+                                </Button>
+                                <Button fx:id="btnSobre" alignment="BASELINE_LEFT" mnemonicParsing="false"
+                                        prefHeight="38.0" prefWidth="176.0" style="-fx-background-color: #0A4969;"
+                                        text="Sobre" textFill="WHITE">
+                                    <font>
+                                        <Font name="System Bold" size="15.0"/>
+                                    </font>
+                                    <graphic>
+                                        <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true"
+                                                   preserveRatio="true">
+                                            <image>
+                                                <Image url="@../icons/info_material_outlined_24px.png"/>
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND"/>
+                                    </cursor>
+                                </Button>
+                                <Button fx:id="btnSair" alignment="BASELINE_LEFT" mnemonicParsing="false"
+                                        prefHeight="38.0" prefWidth="176.0" style="-fx-background-color: #0A4969;"
+                                        text="Sair" textFill="WHITE">
+                                    <font>
+                                        <Font name="System Bold" size="15.0"/>
+                                    </font>
+                                    <graphic>
+                                        <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true"
+                                                   preserveRatio="true">
+                                            <image>
+                                                <Image url="@../icons/exit_32px.png"/>
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND"/>
+                                    </cursor>
+                                </Button>
+                            </children>
+                        </VBox>
+                    </children>
+                </AnchorPane>
+            </left>
+            <center>
+                <StackPane fx:id="stackPane" prefHeight="435.0" prefWidth="844.0" BorderPane.alignment="CENTER"/>
+            </center>
+        </BorderPane>
+    </children>
 </AnchorPane>
